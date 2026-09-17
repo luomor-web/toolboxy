@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 项目概述
 
-烙馍网工具专区（toolboxy.luomor.com）—— 约 48 个独立在线工具（时间戳、JSON 格式化、Base64、加密解密、计算器、汇率、万年历、各类查询等）组成的纯静态 + 少量 PHP 的站点。本目录嵌在主站字帖项目（luomor-zt，有独立 CLAUDE.md）内部，共享其 `../Pinyin.php` 与 `bishun_data/` 笔顺数据。
+烙馍网在线工具（toolboxy.luomor.com）—— 约 48 个独立在线工具（时间戳、JSON 格式化、Base64、加密解密、计算器、汇率、万年历、各类查询等）组成的纯静态 + 少量 PHP 的站点。本目录嵌在主站字帖项目（luomor-zt，有独立 CLAUDE.md）内部，共享其 `../Pinyin.php` 与 `bishun_data/` 笔顺数据。
 
 **无构建系统、无测试、无 lint**——纯 HTML/CSS/JS/PHP，部署即用。本地开发可用 `php -S localhost:8000` 在本目录起服务（注意 pinyin 工具依赖父目录的 `../Pinyin.php`，从 toolboxy 目录起服务时该相对路径恰好成立）。
 

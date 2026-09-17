@@ -43,7 +43,7 @@ function zd_svg($data) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>汉字字典查询结果 - 工具专区 - 烙馍网</title>
+<title>汉字字典查询结果 - 烙馍网在线工具</title>
 <meta name="keywords" content="汉字字典，在线字典，查字典，汉字拼音，笔画数，笔顺，组词，成语查询，烙馍网">
 <meta name="description" content="免费在线汉字字典：输入汉字、词语或成语，查询拼音、笔画数、笔顺图、常用组词和成语释义。">
 <meta name="author" content="烙馍网">
@@ -130,7 +130,7 @@ var _hmt = _hmt || [];
 <div class="container">
 <header class="header">
     <div class="back-links">
-        <a class="back-link" href="/index.html">← 工具专区</a>
+        <a class="back-link" href="/index.html">← 烙馍网在线工具</a>
         <a class="back-link" href="/index.html">← 首页</a>
     </div>
     <h1>📖 汉字字典</h1>

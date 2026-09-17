@@ -1,6 +1,16 @@
 <?php
 /* 小学练习专区共享函数库 */
-include_once dirname(__FILE__).'/Pinyin.php';
+/* Pinyin 类：优先同目录 Pinyin.php（部署时从主站复制），否则回退主站仓库 ../Pinyin.php。
+   不能直接 file_exists('Pinyin.php') 判断：大小写不敏感的文件系统（Windows/macOS）会
+   错误命中同目录的 pinyin.php 工具页，导致整页 HTML 混入输出。scandir 返回真实文件名，
+   可做大小写敏感的存在性判断。 */
+if (!class_exists('Pinyin')) {
+    if (in_array('Pinyin.php', scandir(dirname(__FILE__)), true)) {
+        include_once dirname(__FILE__).'/Pinyin.php';
+    } else {
+        include_once dirname(__FILE__).'/../Pinyin.php';
+    }
+}
 
 /* 主字体颜色（同 tzg.php） */
 function xx_colors(){

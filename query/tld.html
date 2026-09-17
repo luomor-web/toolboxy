@@ -1,65 +1,36 @@
-<?php
-/* 汉字转拼音 - 服务端转换（复用 ../Pinyin.php 字典） */
-include_once dirname(__FILE__).'/../Pinyin.php';
-
-$text = trim((string)($_POST['text'] ?? $_GET['text'] ?? ''));
-$fmt  = (string)($_POST['fmt'] ?? $_GET['fmt'] ?? 'tone');
-if (!in_array($fmt, ['tone', 'plain', 'first'], true)) $fmt = 'tone';
-if (mb_strlen($text, 'UTF-8') > 500) $text = mb_substr($text, 0, 500, 'UTF-8');
-
-/* 带声调符号 → 无声调（ü 系列转为 v，与输入法习惯一致） */
-function py_plain($s) {
-    static $map = [
-        'ā'=>'a','á'=>'a','ǎ'=>'a','à'=>'a',
-        'ē'=>'e','é'=>'e','ě'=>'e','è'=>'e',
-        'ī'=>'i','í'=>'i','ǐ'=>'i','ì'=>'i',
-        'ō'=>'o','ó'=>'o','ǒ'=>'o','ò'=>'o',
-        'ū'=>'u','ú'=>'u','ǔ'=>'u','ù'=>'u',
-        'ǖ'=>'v','ǘ'=>'v','ǚ'=>'v','ǜ'=>'v','ü'=>'v',
-    ];
-    return strtr($s, $map);
-}
-
-$result = '';
-if ($text !== '') {
-    preg_match_all('/./u', $text, $m);
-    foreach ($m[0] as $ch) {
-        $py = Pinyin::getPinyin($ch);
-        if ($py !== $ch) {
-            if ($fmt === 'plain') $py = py_plain($py);
-            elseif ($fmt === 'first') $py = mb_substr(py_plain($py), 0, 1, 'UTF-8');
-            // 与前一个拼音/英文单词之间补空格
-            if ($result !== '' && !preg_match('/[\s\p{P}]$/u', $result)) $result .= ' ';
-            $result .= $py . ' ';
-        } else {
-            $result .= $ch; // 标点、英文、数字、换行原样保留
-        }
-    }
-    // 清理：标点前多余空格、行尾空格、连续空格
-    $result = preg_replace('/ +(\p{P})/u', '$1', $result);
-    $result = preg_replace('/[ \t]+$/m', '', $result);
-    $result = preg_replace('/ {2,}/', ' ', trim($result));
-}
-$checked = ['tone'=>'', 'plain'=>'', 'first'=>''];
-$checked[$fmt] = ' checked';
-?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>汉字转拼音结果 - 工具专区 - 烙馍网</title>
-<meta name="keywords" content="汉字转拼音，拼音转换，汉字拼音在线，带声调拼音，拼音首字母，烙馍网">
-<meta name="description" content="免费在线汉字转拼音工具：批量把汉字转换为拼音，支持带声调、不带声调、首字母三种格式。">
+<title>域名后缀查询 - 域名后缀含义说明大全 - 工具专区 - 烙馍网</title>
+<meta name="keywords" content="域名后缀查询，域名后缀含义，TLD，顶级域名，.com含义，国家域名后缀，烙馍网">
+<meta name="description" content="免费在线域名后缀查询：通用后缀（.com/.net/.io 等）的含义说明，国家/地区后缀（.cn/.jp 等）对照所属国家，输入后缀或关键词即查。">
 <meta name="author" content="烙馍网">
-<link rel="canonical" href="https://toolboxy.luomor.com/convert/pinyin.html">
+<link rel="canonical" href="https://toolboxy.luomor.com/query/tld.html">
 <meta name="robots" content="index, follow">
-<link rel="stylesheet" href="form.css">
+<link rel="stylesheet" href="/form.css">
 <style>
 .tool-input{ width:100%; padding:10px 14px; border:2px solid var(--border-color); border-radius:8px; font-size:15px; font-family:inherit; background:#fff; }
 .tool-input:focus{ outline:none; border-color:#667eea; }
+.field-row{ display:flex; gap:14px; flex-wrap:wrap; margin-top:22px; }
+.field-row .field{ flex:1; min-width:180px; }
+.field-row label{ font-size:14px; font-weight:600; color:#666; display:block; margin-bottom:6px; }
 .btn-sub{ background:#fff; color:#667eea; border:2px solid #667eea; padding:12px 26px; font-size:15px; margin:6px 4px 0; }
-.result-box{ margin-top:18px; padding:14px 16px; background:#f8f9fa; border-radius:8px; font-size:18px; line-height:2; word-break:break-all; }
+.q-list{ margin-top:18px; }
+.q-item{ display:flex; align-items:center; gap:12px; padding:12px 14px; border:1px solid var(--border-color); border-radius:10px; margin-bottom:8px; background:#fff; transition:all .2s; flex-wrap:wrap; }
+.q-item:hover{ box-shadow:0 3px 12px rgba(0,0,0,.08); }
+.q-item .main{ flex:1; min-width:150px; font-size:15px; color:#444; }
+.q-item .big{ font-size:20px; font-weight:700; color:#764ba2; font-family:Menlo,Consolas,monospace; }
+.q-empty{ text-align:center; color:#bbb; padding:20px 0; font-size:14px; }
+.q-info{ margin-top:12px; font-size:13px; color:#999; }
+.kv-table{ width:100%; border-collapse:collapse; margin-top:14px; font-size:15px; }
+.kv-table th,.kv-table td{ border:1px solid var(--border-color); padding:10px 14px; text-align:left; }
+.kv-table th{ background:#f8f9fa; color:#666; font-weight:600; width:140px; }
+.result-box{ margin-top:18px; padding:14px 16px; background:#f8f9fa; border-radius:8px; font-size:15px; word-break:break-all; display:none; }
+.result-box.show{ display:block; }
+.result-box.error{ background:#fdecea; color:#c0392b; }
+.tld-tag{ font-size:12px; padding:2px 9px; border-radius:10px; flex:none; font-weight:600; }
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6096731848877113" crossorigin="anonymous"></script>
     <script async src="https://fundingchoicesmessages.google.com/i/pub-6096731848877113?ers=1"></script><script>(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
@@ -117,7 +88,7 @@ var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
   hm.src = "https://hm.baidu.com/hm.js?12a0d13963b589e9095ccecdd327f3fa";
-  var s = document.getElementsByTagName("script")[0];
+  var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
 })();
 </script>
@@ -129,8 +100,8 @@ var _hmt = _hmt || [];
         <a class="back-link" href="/index.html">← 工具专区</a>
         <a class="back-link" href="/index.html">← 首页</a>
     </div>
-    <h1>🗣️ 汉字转拼音</h1>
-    <p class="subtitle">带声调 · 不带声调 · 首字母</p>
+    <h1>🌐 域名后缀查询</h1>
+    <p class="subtitle">通用后缀含义 · 国别后缀对照</p>
 </header>
 
 <nav class="nav-bar" aria-label="主导航">
@@ -216,59 +187,111 @@ var _hmt = _hmt || [];
     </nav>
 
 <div class="card">
-<?php if ($result !== ''): ?>
-<div class="result-box" id="result"><?php echo nl2br(htmlspecialchars($result, ENT_QUOTES, 'UTF-8')); ?></div>
-<div class="btn-row" style="margin-top:14px;text-align:left;">
-    <button type="button" class="submit-btn btn-sub" id="btn-copy">复制结果</button>
+<p class="seo-intro">在线域名后缀查询：输入域名后缀（如 .com、.io、.cn）或关键词，查看后缀类型和含义说明——通用后缀附用途介绍，国别后缀（ccTLD）直接对照所属国家/地区，全部在浏览器本地完成。</p>
+<div class="field-row" style="margin-top:0;">
+    <div class="field">
+        <label for="kw">输入域名后缀或关键词</label>
+        <input class="tool-input" type="text" id="kw" placeholder="例如：.com / .cn / 中国 / 电商" autocomplete="off">
+    </div>
+    <div class="field" style="flex:0 0 110px;display:flex;align-items:flex-end;">
+        <button type="button" class="submit-btn" style="padding:10px 26px;font-size:15px;" id="btn-search">查询</button>
+    </div>
 </div>
-<?php elseif ($text === ''): ?>
-<p class="seo-intro">输入汉字文本，一键转换为带声调拼音、不带声调拼音或拼音首字母。</p>
-<?php endif; ?>
-
-<form method="post" action="pinyin.php" style="margin-top:18px;">
-    <label class="form-label" for="text">输入汉字（最多 500 字）</label>
-    <textarea id="text" name="text" maxlength="500" placeholder="例如：锄禾日当午，汗滴禾下土。"><?php echo htmlspecialchars($text, ENT_QUOTES, 'UTF-8'); ?></textarea>
-
-    <div class="options-grid">
-        <div class="option-group">
-            <div class="option-group-title">拼音格式</div>
-            <div class="radio-group">
-                <label class="radio-label"><input type="radio" name="fmt" value="tone"<?php echo $checked['tone']; ?>><span>带声调（hàn zì）</span></label>
-                <label class="radio-label"><input type="radio" name="fmt" value="plain"<?php echo $checked['plain']; ?>><span>不带声调（han zi）</span></label>
-                <label class="radio-label"><input type="radio" name="fmt" value="first"<?php echo $checked['first']; ?>><span>首字母（h z）</span></label>
-            </div>
-        </div>
-    </div>
-
-    <div class="btn-row">
-        <button type="submit" class="submit-btn">立即转换</button>
-    </div>
-</form>
-
+<div class="q-info" id="q-info">正在加载数据…</div>
+<div class="q-list" id="list"></div>
     <div class="tutorial">
         <h3>使用教程</h3>
         <ol>
-            <li>在输入框中粘贴或输入汉字（最多 500 字）</li>
-            <li>选择拼音格式：带声调、不带声调或首字母</li>
-            <li>点击 <strong>立即转换</strong> 查看结果，可一键复制</li>
+            <li>输入域名后缀（如 .com、.cn）或关键词（如「中国」「电商」）</li>
+            <li>通用后缀显示含义说明，国别后缀显示所属国家/地区</li>
+            <li>蓝色标签为通用后缀，绿色标签为国别后缀</li>
         </ol>
-        <div class="tip"><strong>💡 提示：</strong>拼音字典数据来自 mozillazg/pinyin-data，多音字按本站字帖的常用读音取舍；标点、英文和数字会原样保留。</div>
+        <div class="tip"><strong>💡 提示：</strong>国别后缀（ccTLD）数据来自 ISO 3166；部分国别后缀因含义好记被他行业广泛使用（如 .io/.ai/.tv/.co）。</div>
     </div>
 </div>
 </div>
-<script src="js/nav.js" defer></script>
+<script src="/js/nav.js" defer></script>
+
 <script>
-var copyBtn=document.getElementById('btn-copy');
-if(copyBtn){
-    copyBtn.addEventListener('click',function(){
-        var t=document.getElementById('result').innerText, b=this;
-        navigator.clipboard.writeText(t).then(function(){
-            b.textContent='已复制';
-            setTimeout(function(){ b.textContent='复制结果'; },1200);
-        });
+var GTLD={
+    '.com':['通用','商业机构（commercial），全球最通用的后缀'],
+    '.net':['通用','网络服务（network），早期用于网络基础设施'],
+    '.org':['通用','组织机构（organization），常用于非营利组织'],
+    '.edu':['通用','教育机构（education），主要面向美国高校'],
+    '.gov':['通用','政府机构（government），美国政府专用'],
+    '.mil':['通用','军事机构（military），美国军方专用'],
+    '.int':['通用','国际组织（international），条约机构专用'],
+    '.info':['通用','信息资讯（information）'],
+    '.biz':['通用','商业业务（business）'],
+    '.name':['通用','个人姓名'],
+    '.pro':['通用','专业人士（professional）'],
+    '.mobi':['通用','移动设备网站'],
+    '.asia':['地区','亚洲地区'],
+    '.io':['国别/科技','英属印度洋领地，科技圈和初创公司常用'],
+    '.ai':['国别/科技','安圭拉，人工智能（AI）公司常用'],
+    '.me':['国别/个性','黑山，个人主页常用（me=我）'],
+    '.tv':['国别/视频','图瓦卢，视频和直播网站常用'],
+    '.co':['国别/商业','哥伦比亚，常作 .com 的替代（company）'],
+    '.cc':['国别','科科斯群岛，曾被国内网站广泛使用'],
+    '.fm':['国别/电台','密克罗尼西亚，电台和音频媒体常用'],
+    '.app':['通用','移动应用，强制 HTTPS'],
+    '.dev':['通用','开发者，强制 HTTPS'],
+    '.tech':['通用','科技行业'],
+    '.top':['通用','顶级、高端'],
+    '.xyz':['通用','通用新后缀，价格较低'],
+    '.vip':['通用','会员、高端服务'],
+    '.shop':['通用','电商购物'],
+    '.store':['通用','商店'],
+    '.online':['通用','在线服务'],
+    '.site':['通用','通用站点'],
+    '.club':['通用','俱乐部、社群'],
+    '.wang':['通用','中文"网"谐音，中文站点'],
+    '.ren':['通用','中文"人"拼音'],
+    '.xin':['通用','中文"信"拼音，诚信主题'],
+    '.中国':['中文','中国中文域名'],
+    '.公司':['中文','中文"公司"域名'],
+    '.网络':['中文','中文"网络"域名']
+};
+var CC=[], list=document.getElementById('list'), info=document.getElementById('q-info'), timer=null;
+fetch('/data/country.json').then(function(r){ return r.json(); }).then(function(d){
+    CC=d;
+    info.textContent='收录 36 个常用后缀说明 + '+d.length+' 个国家/地区后缀，输入关键词即查';
+}).catch(function(){ info.textContent='数据加载失败，请刷新重试'; });
+function search(kw){
+    kw=kw.trim().toLowerCase();
+    if(!kw){ list.innerHTML=''; return; }
+    if(kw[0]!=='.') kw='.'+kw.replace(/^\./,'');
+    var bare=kw.slice(1), res=[];
+    Object.keys(GTLD).forEach(function(t){
+        if(t.toLowerCase().indexOf(kw)>-1||GTLD[t][1].toLowerCase().indexOf(bare)>-1) res.push([t,'g',GTLD[t]]);
+    });
+    CC.forEach(function(c){
+        var t=c[4].toLowerCase();
+        if(t&&(t.indexOf(kw)>-1||(c[5]&&c[5].indexOf(bare)>-1)||c[6].toLowerCase().indexOf(bare)>-1)){
+            res.push([c[4],'c',['国别后缀',(c[5]||c[6])+' '+c[6]+' 的国家/地区顶级域（ccTLD）']]);
+        }
+    });
+    res=res.slice(0,50);
+    if(!res.length){ list.innerHTML='<div class="q-empty">未找到相关的域名后缀</div>'; return; }
+    list.innerHTML='';
+    res.forEach(function(r){
+        var div=document.createElement('div');
+        div.className='q-item';
+        var color=r[1]==='g'?'#3498db':'#27ae60', bg=r[1]==='g'?'#eaf3fb':'#e9f7ef';
+        div.innerHTML='<div class="big"></div><span class="tld-tag"></span><div class="main" style="font-size:14px;color:#666;"></div>';
+        div.querySelector('.big').textContent=r[0];
+        var tag=div.querySelector('.tld-tag');
+        tag.textContent=r[2][0]; tag.style.color=color; tag.style.background=bg;
+        div.querySelector('.main').textContent=r[2][1];
+        list.appendChild(div);
     });
 }
+document.getElementById('kw').addEventListener('input',function(){
+    clearTimeout(timer); timer=setTimeout(function(){ search(document.getElementById('kw').value); },200);
+});
+document.getElementById('btn-search').addEventListener('click',function(){ search(document.getElementById('kw').value); });
+document.getElementById('kw').addEventListener('keydown',function(e){ if(e.key==='Enter') search(this.value); });
 </script>
-<script src="js/site-i18n.js" defer></script>
+<script src="/js/site-i18n.js" defer></script>
 </body>
 </html>

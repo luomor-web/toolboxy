@@ -57,6 +57,7 @@ body{ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica 
 }
 .nav-sub a{ white-space:nowrap; text-align:center; }
 .cards{ columns:280px; column-gap:20px; }
+.cat-title{ font-size:20px; margin:28px 0 14px; padding-left:4px; color:var(--text-color); scroll-margin-top:70px; }
 .card-link{ display:block; break-inside:avoid; margin-bottom:20px; text-decoration:none; color:inherit; }
 .card{ background:#fff; border-radius:var(--radius); box-shadow:var(--shadow); padding:28px; transition:all .3s ease; }
 .card-link:hover .card{ box-shadow:var(--shadow-hover); transform:translateY(-4px); }
@@ -145,206 +146,248 @@ var _hmt = _hmt || [];
     <nav class="nav-bar" aria-label="主导航">
         <a href="https://www.luomor.com/">烙馍网首页</a>
         <div class="nav-dropdown">
-            <a href="index.html">工具专区</a>
-            <div class="nav-sub nav-grid">
-                <a href="timestamp.html">时间戳转换</a>
-                <a href="json.html">JSON 格式化</a>
-                <a href="codefmt.html">格式化代码</a>
-                <a href="markdown.html">Markdown 编辑器</a>
-                <a href="htmledit.html">HTML 编辑器</a>
-                <a href="base64.html">Base64 编解码</a>
-                <a href="aes.html">加密解密</a>
-                <a href="password.html">密码生成器</a>
-                <a href="jisuan.html">在线计算器</a>
-                <a href="fangdai.html">房贷计算</a>
-                <a href="yanglao.html">养老金计算</a>
-                <a href="geshui.html">个税计算</a>
-                <a href="qiyeshui.html">企业所得税</a>
-                <a href="zengzhishui.html">增值税计算</a>
-                <a href="shangpin.html">商品税计算</a>
-                <a href="bmi.html">BMI 计算器</a>
-                <a href="huobi.html">币种转换</a>
-                <a href="shizhong.html">世界时钟</a>
-                <a href="rili.html">万年历</a>
-                <a href="youbian.html">邮编查询</a>
-                <a href="diqu.html">地区编码查询</a>
-                <a href="jichang.html">机场三字码</a>
-                <a href="guojia.html">国家编码查询</a>
-                <a href="sfz.html">身份证号解析</a>
-                <a href="shouji.html">手机号验证</a>
-                <a href="tld.html">域名后缀查询</a>
-                <a href="whois.html">域名查询</a>
-                <a href="dns.html">域名解析查询</a>
-                <a href="myip.html">本机IP查询</a>
-                <a href="ipcha.html">IP 查询</a>
-                <a href="lianlu.html">网络链路查询</a>
-                <a href="shuxue.html">数学符号</a>
-                <a href="daxie.html">大写数字</a>
-                <a href="teshu.html">特殊符号</a>
-                <a href="biaozhi.html">交通标志</a>
-                <a href="emoji.html">emoji 符号</a>
-                <a href="zhongliang.html">重量转换</a>
-                <a href="wendu.html">温度转换</a>
-                <a href="fengsu.html">风速转换</a>
-                <a href="zishu.html">字数统计</a>
-                <a href="semang.html">色盲测试</a>
-                <a href="chepai.html">车牌查询</a>
-                <a href="fanyi.html">在线翻译</a>
-                <a href="jianfan.html">简繁转换</a>
-                <a href="pinyin.html">汉字转拼音</a>
-                <a href="zidian.html">汉字字典</a>
-                <a href="imgzip.html">图片压缩</a>
-                <a href="imgconv.html">图片格式转换</a>
+            <a href="javascript:void(0)">开发工具</a>
+            <div class="nav-sub">
+                <a href="/dev/timestamp.html">时间戳转换</a>
+                <a href="/dev/json.html">JSON 格式化</a>
+                <a href="/dev/codefmt.html">格式化代码</a>
+                <a href="/dev/markdown.html">Markdown 编辑器</a>
+                <a href="/dev/htmledit.html">HTML 编辑器</a>
+                <a href="/dev/base64.html">Base64 编解码</a>
+                <a href="/dev/aes.html">加密解密</a>
+                <a href="/dev/password.html">密码生成器</a>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <a href="javascript:void(0)">计算工具</a>
+            <div class="nav-sub">
+                <a href="/calc/jisuan.html">在线计算器</a>
+                <a href="/calc/fangdai.html">房贷计算</a>
+                <a href="/calc/yanglao.html">养老金计算</a>
+                <a href="/calc/geshui.html">个税计算</a>
+                <a href="/calc/qiyeshui.html">企业所得税</a>
+                <a href="/calc/zengzhishui.html">增值税计算</a>
+                <a href="/calc/shangpin.html">商品税计算</a>
+                <a href="/calc/bmi.html">BMI 计算器</a>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <a href="javascript:void(0)">查询工具</a>
+            <div class="nav-sub">
+                <a href="/query/youbian.html">邮编查询</a>
+                <a href="/query/diqu.html">地区编码查询</a>
+                <a href="/query/jichang.html">机场三字码</a>
+                <a href="/query/guojia.html">国家编码查询</a>
+                <a href="/query/sfz.html">身份证号解析</a>
+                <a href="/query/shouji.html">手机号验证</a>
+                <a href="/query/chepai.html">车牌查询</a>
+                <a href="/query/tld.html">域名后缀查询</a>
+                <a href="/query/whois.html">域名查询</a>
+                <a href="/query/dns.html">域名解析查询</a>
+                <a href="/query/myip.html">本机IP查询</a>
+                <a href="/query/ipcha.html">IP 查询</a>
+                <a href="/query/lianlu.html">网络链路查询</a>
+                <a href="/query/zidian.html">汉字字典</a>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <a href="javascript:void(0)">换算工具</a>
+            <div class="nav-sub">
+                <a href="/convert/huobi.html">币种转换</a>
+                <a href="/convert/shizhong.html">世界时钟</a>
+                <a href="/convert/rili.html">万年历</a>
+                <a href="/convert/zhongliang.html">重量转换</a>
+                <a href="/convert/wendu.html">温度转换</a>
+                <a href="/convert/fengsu.html">风速转换</a>
+                <a href="/convert/daxie.html">大写数字</a>
+                <a href="/convert/jianfan.html">简繁转换</a>
+                <a href="/convert/pinyin.html">汉字转拼音</a>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <a href="javascript:void(0)">图片工具</a>
+            <div class="nav-sub">
+                <a href="/image/imgzip.html">图片压缩</a>
+                <a href="/image/imgconv.html">图片格式转换</a>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <a href="javascript:void(0)">其它工具</a>
+            <div class="nav-sub">
+                <a href="/other/shuxue.html">数学符号</a>
+                <a href="/other/teshu.html">特殊符号</a>
+                <a href="/other/biaozhi.html">交通标志</a>
+                <a href="/other/emoji.html">emoji 符号</a>
+                <a href="/other/zishu.html">字数统计</a>
+                <a href="/other/semang.html">色盲测试</a>
+                <a href="/other/fanyi.html">在线翻译</a>
             </div>
         </div>
     </nav>
 
+    <h2 class="cat-title" id="dev">🛠️ 开发工具</h2>
     <div class="cards">
-        <a class="card-link" href="timestamp.html">
+        <a class="card-link" href="/dev/timestamp.html">
             <div class="card"><div class="icon">🕐</div><h2>时间戳转换</h2><p>Unix 时间戳与日期时间互相转换，实时显示当前时间戳，支持秒和毫秒。</p></div>
         </a>
-        <a class="card-link" href="json.html">
+        <a class="card-link" href="/dev/json.html">
             <div class="card"><div class="icon">🧾</div><h2>JSON 格式化</h2><p>JSON 格式化美化、压缩、校验，语法错误即时定位提示。</p></div>
         </a>
-        <a class="card-link" href="codefmt.html">
+        <a class="card-link" href="/dev/codefmt.html">
             <div class="card"><div class="icon">💻</div><h2>格式化代码</h2><p>JavaScript、HTML、CSS 代码一键格式化美化，缩进可选。</p></div>
         </a>
-        <a class="card-link" href="markdown.html">
+        <a class="card-link" href="/dev/markdown.html">
             <div class="card"><div class="icon">📝</div><h2>Markdown 编辑器</h2><p>左侧编辑右侧实时预览，渲染后的 HTML 一键复制。</p></div>
         </a>
-        <a class="card-link" href="htmledit.html">
+        <a class="card-link" href="/dev/htmledit.html">
             <div class="card"><div class="icon">🧑‍💻</div><h2>HTML 编辑器</h2><p>左侧编写 HTML/CSS/JS，右侧实时预览运行，可下载。</p></div>
         </a>
-        <a class="card-link" href="base64.html">
+        <a class="card-link" href="/dev/base64.html">
             <div class="card"><div class="icon">🔡</div><h2>Base64 编解码</h2><p>文本与 Base64 互相转换，完整支持中文 UTF-8 编码。</p></div>
         </a>
-        <a class="card-link" href="aes.html">
+        <a class="card-link" href="/dev/aes.html">
             <div class="card"><div class="icon">🔐</div><h2>加密解密</h2><p>AES-GCM 加密算法，设置密码在本地加密、解密文本。</p></div>
         </a>
-        <a class="card-link" href="password.html">
+        <a class="card-link" href="/dev/password.html">
             <div class="card"><div class="icon">🔑</div><h2>密码生成器</h2><p>自定义长度和字符集，本地生成高强度随机密码，一键复制。</p></div>
         </a>
-        <a class="card-link" href="jisuan.html">
+    </div>
+    <h2 class="cat-title" id="calc">🧮 计算工具</h2>
+    <div class="cards">
+        <a class="card-link" href="/calc/jisuan.html">
             <div class="card"><div class="icon">🧮</div><h2>在线计算器</h2><p>支持四则运算、括号、乘方、开方、三角函数等科学计算。</p></div>
         </a>
-        <a class="card-link" href="fangdai.html">
+        <a class="card-link" href="/calc/fangdai.html">
             <div class="card"><div class="icon">🏠</div><h2>房贷计算</h2><p>等额本息/等额本金两种方式的月供、总利息和总额对比。</p></div>
         </a>
-        <a class="card-link" href="yanglao.html">
+        <a class="card-link" href="/calc/yanglao.html">
             <div class="card"><div class="icon">👴</div><h2>养老金计算</h2><p>按缴费基数和年限估算退休金，含构成明细和替代率。</p></div>
         </a>
-        <a class="card-link" href="geshui.html">
+        <a class="card-link" href="/calc/geshui.html">
             <div class="card"><div class="icon">🧾</div><h2>个税计算</h2><p>工资累计预扣 + 年终奖单独计税，含全年每月明细。</p></div>
         </a>
-        <a class="card-link" href="qiyeshui.html">
+        <a class="card-link" href="/calc/qiyeshui.html">
             <div class="card"><div class="icon">🏢</div><h2>企业所得税</h2><p>小微企业 5%、高新 15%、一般 25%，税额与税后利润。</p></div>
         </a>
-        <a class="card-link" href="zengzhishui.html">
+        <a class="card-link" href="/calc/zengzhishui.html">
             <div class="card"><div class="icon">🧮</div><h2>增值税计算</h2><p>销项税额 − 进项税额 = 应纳税额，多档税率可选。</p></div>
         </a>
-        <a class="card-link" href="shangpin.html">
+        <a class="card-link" href="/calc/shangpin.html">
             <div class="card"><div class="icon">🏷️</div><h2>商品税计算</h2><p>价税分离：含税销售金额拆分为商品金额和税额。</p></div>
         </a>
-        <a class="card-link" href="bmi.html">
+        <a class="card-link" href="/calc/bmi.html">
             <div class="card"><div class="icon">⚖️</div><h2>BMI 计算器</h2><p>输入身高体重，计算 BMI 身体质量指数并给出健康建议。</p></div>
         </a>
-        <a class="card-link" href="huobi.html">
-            <div class="card"><div class="icon">💱</div><h2>币种转换</h2><p>人民币与美元、欧元、日元等 13 种货币实时汇率换算。</p></div>
-        </a>
-        <a class="card-link" href="shizhong.html">
-            <div class="card"><div class="icon">🌍</div><h2>世界时钟</h2><p>全球主要城市当前时间实时显示，可自由添加删除城市。</p></div>
-        </a>
-        <a class="card-link" href="rili.html">
-            <div class="card"><div class="icon">📅</div><h2>万年历</h2><p>公历农历对照、黄历宜忌、节假日，事件备忘支持重复提醒和通知。</p></div>
-        </a>
-        <a class="card-link" href="youbian.html">
+    </div>
+    <h2 class="cat-title" id="query">🔍 查询工具</h2>
+    <div class="cards">
+        <a class="card-link" href="/query/youbian.html">
             <div class="card"><div class="icon">📮</div><h2>邮编查询</h2><p>全国 2879 个区县邮政编码，名称拼音即查，一键复制。</p></div>
         </a>
-        <a class="card-link" href="diqu.html">
+        <a class="card-link" href="/query/diqu.html">
             <div class="card"><div class="icon">🗺️</div><h2>地区编码查询</h2><p>全国 2879 个区县的行政区划代码与邮编对照查询。</p></div>
         </a>
-        <a class="card-link" href="jichang.html">
+        <a class="card-link" href="/query/jichang.html">
             <div class="card"><div class="icon">✈️</div><h2>机场三字码</h2><p>全球 7900+ 机场 IATA 三字代码，中英文城市/机场名即查。</p></div>
         </a>
-        <a class="card-link" href="guojia.html">
+        <a class="card-link" href="/query/guojia.html">
             <div class="card"><div class="icon">🌏</div><h2>国家编码查询</h2><p>ISO 二字码/三字码/数字码、电话区号、域名后缀。</p></div>
         </a>
-        <a class="card-link" href="sfz.html">
+        <a class="card-link" href="/query/sfz.html">
             <div class="card"><div class="icon">🪪</div><h2>身份证号解析</h2><p>校验合法性，解析归属地、出生日期、性别、生肖星座。</p></div>
         </a>
-        <a class="card-link" href="shouji.html">
+        <a class="card-link" href="/query/shouji.html">
             <div class="card"><div class="icon">📱</div><h2>手机号验证</h2><p>全球 250 国手机号码格式校验，显示国际格式。</p></div>
         </a>
-        <a class="card-link" href="tld.html">
-            <div class="card"><div class="icon">🌐</div><h2>域名后缀查询</h2><p>通用后缀含义说明，国别后缀对照所属国家。</p></div>
-        </a>
-        <a class="card-link" href="whois.html">
-            <div class="card"><div class="icon">🔎</div><h2>域名查询</h2><p>域名注册商、注册/到期时间、状态和 NS 查询。</p></div>
-        </a>
-        <a class="card-link" href="dns.html">
-            <div class="card"><div class="icon">🧭</div><h2>域名解析查询</h2><p>A/AAAA/CNAME/MX/NS/TXT 等 DNS 记录查询。</p></div>
-        </a>
-        <a class="card-link" href="myip.html">
-            <div class="card"><div class="icon">🖥️</div><h2>本机IP查询</h2><p>查看你的公网 IP 地址、归属地和运营商。</p></div>
-        </a>
-        <a class="card-link" href="ipcha.html">
-            <div class="card"><div class="icon">📍</div><h2>IP 查询</h2><p>任意 IP 的归属地、运营商、经纬度查询。</p></div>
-        </a>
-        <a class="card-link" href="lianlu.html">
-            <div class="card"><div class="icon">🛰️</div><h2>网络链路查询</h2><p>全球多节点 Ping 检测，对比各地区延迟。</p></div>
-        </a>
-        <a class="card-link" href="shuxue.html">
-            <div class="card"><div class="icon">➗</div><h2>数学符号</h2><p>运算/几何/集合/希腊字母大全，含读音含义，点击复制。</p></div>
-        </a>
-        <a class="card-link" href="daxie.html">
-            <div class="card"><div class="icon">🔢</div><h2>大写数字</h2><p>零壹贰叁对照表，金额一键转人民币大写。</p></div>
-        </a>
-        <a class="card-link" href="teshu.html">
-            <div class="card"><div class="icon">✨</div><h2>特殊符号</h2><p>箭头/货币/星座/音乐等符号大全，点击复制。</p></div>
-        </a>
-        <a class="card-link" href="biaozhi.html">
-            <div class="card"><div class="icon">🚦</div><h2>交通标志</h2><p>禁令/指示/警告标志图片名称对照，学车必备。</p></div>
-        </a>
-        <a class="card-link" href="emoji.html">
-            <div class="card"><div class="icon">😀</div><h2>emoji 符号查询</h2><p>十大类 789 个 emoji，含名称含义，点击复制。</p></div>
-        </a>
-        <a class="card-link" href="zhongliang.html">
-            <div class="card"><div class="icon">⚖️</div><h2>重量转换</h2><p>公斤、克、斤、两互相换算。</p></div>
-        </a>
-        <a class="card-link" href="wendu.html">
-            <div class="card"><div class="icon">🌡️</div><h2>温度转换</h2><p>摄氏度、华氏度、开氏度互相换算。</p></div>
-        </a>
-        <a class="card-link" href="fengsu.html">
-            <div class="card"><div class="icon">💨</div><h2>风速转换</h2><p>m/s、km/h 与蒲福风级（几级风）换算。</p></div>
-        </a>
-        <a class="card-link" href="zishu.html">
-            <div class="card"><div class="icon">🔢</div><h2>字数统计</h2><p>字符/汉字/单词/行段落实时统计。</p></div>
-        </a>
-        <a class="card-link" href="semang.html">
-            <div class="card"><div class="icon">🎨</div><h2>色盲测试</h2><p>仿石原检测图，色觉自测（仅供参考）。</p></div>
-        </a>
-        <a class="card-link" href="chepai.html">
+        <a class="card-link" href="/query/chepai.html">
             <div class="card"><div class="icon">🚗</div><h2>车牌查询</h2><p>全国 419 个车牌号段归属地查询。</p></div>
         </a>
-        <a class="card-link" href="fanyi.html">
-            <div class="card"><div class="icon">🌐</div><h2>在线翻译</h2><p>中文与英、日、韩等 9 种语言互译，长文本自动分段。</p></div>
+        <a class="card-link" href="/query/tld.html">
+            <div class="card"><div class="icon">🌐</div><h2>域名后缀查询</h2><p>通用后缀含义说明，国别后缀对照所属国家。</p></div>
         </a>
-        <a class="card-link" href="jianfan.html">
-            <div class="card"><div class="icon">🇨🇳</div><h2>简繁转换</h2><p>简体中文与繁体中文互相转换，支持台湾、香港用词习惯。</p></div>
+        <a class="card-link" href="/query/whois.html">
+            <div class="card"><div class="icon">🔎</div><h2>域名查询</h2><p>域名注册商、注册/到期时间、状态和 NS 查询。</p></div>
         </a>
-        <a class="card-link" href="pinyin.html">
-            <div class="card"><div class="icon">🗣️</div><h2>汉字转拼音</h2><p>汉字批量转拼音，支持带声调、不带声调和首字母三种格式。</p></div>
+        <a class="card-link" href="/query/dns.html">
+            <div class="card"><div class="icon">🧭</div><h2>域名解析查询</h2><p>A/AAAA/CNAME/MX/NS/TXT 等 DNS 记录查询。</p></div>
         </a>
-        <a class="card-link" href="zidian.html">
+        <a class="card-link" href="/query/myip.html">
+            <div class="card"><div class="icon">🖥️</div><h2>本机IP查询</h2><p>查看你的公网 IP 地址、归属地和运营商。</p></div>
+        </a>
+        <a class="card-link" href="/query/ipcha.html">
+            <div class="card"><div class="icon">📍</div><h2>IP 查询</h2><p>任意 IP 的归属地、运营商、经纬度查询。</p></div>
+        </a>
+        <a class="card-link" href="/query/lianlu.html">
+            <div class="card"><div class="icon">🛰️</div><h2>网络链路查询</h2><p>全球多节点 Ping 检测，对比各地区延迟。</p></div>
+        </a>
+        <a class="card-link" href="/query/zidian.html">
             <div class="card"><div class="icon">📖</div><h2>汉字字典</h2><p>查拼音、笔画数、笔顺和组词，成语附拼音和释义。</p></div>
         </a>
-        <a class="card-link" href="imgzip.html">
+    </div>
+    <h2 class="cat-title" id="convert">🔄 换算工具</h2>
+    <div class="cards">
+        <a class="card-link" href="/convert/huobi.html">
+            <div class="card"><div class="icon">💱</div><h2>币种转换</h2><p>人民币与美元、欧元、日元等 13 种货币实时汇率换算。</p></div>
+        </a>
+        <a class="card-link" href="/convert/shizhong.html">
+            <div class="card"><div class="icon">🌍</div><h2>世界时钟</h2><p>全球主要城市当前时间实时显示，可自由添加删除城市。</p></div>
+        </a>
+        <a class="card-link" href="/convert/rili.html">
+            <div class="card"><div class="icon">📅</div><h2>万年历</h2><p>公历农历对照、黄历宜忌、节假日，事件备忘支持重复提醒和通知。</p></div>
+        </a>
+        <a class="card-link" href="/convert/zhongliang.html">
+            <div class="card"><div class="icon">⚖️</div><h2>重量转换</h2><p>公斤、克、斤、两互相换算。</p></div>
+        </a>
+        <a class="card-link" href="/convert/wendu.html">
+            <div class="card"><div class="icon">🌡️</div><h2>温度转换</h2><p>摄氏度、华氏度、开氏度互相换算。</p></div>
+        </a>
+        <a class="card-link" href="/convert/fengsu.html">
+            <div class="card"><div class="icon">💨</div><h2>风速转换</h2><p>m/s、km/h 与蒲福风级（几级风）换算。</p></div>
+        </a>
+        <a class="card-link" href="/convert/daxie.html">
+            <div class="card"><div class="icon">🔢</div><h2>大写数字</h2><p>零壹贰叁对照表，金额一键转人民币大写。</p></div>
+        </a>
+        <a class="card-link" href="/convert/jianfan.html">
+            <div class="card"><div class="icon">🇨🇳</div><h2>简繁转换</h2><p>简体中文与繁体中文互相转换，支持台湾、香港用词习惯。</p></div>
+        </a>
+        <a class="card-link" href="/convert/pinyin.html">
+            <div class="card"><div class="icon">🗣️</div><h2>汉字转拼音</h2><p>汉字批量转拼音，支持带声调、不带声调和首字母三种格式。</p></div>
+        </a>
+    </div>
+    <h2 class="cat-title" id="image">🖼️ 图片工具</h2>
+    <div class="cards">
+        <a class="card-link" href="/image/imgzip.html">
             <div class="card"><div class="icon">🖼️</div><h2>图片压缩</h2><p>浏览器本地压缩图片，质量和尺寸可调，文件不上传服务器。</p></div>
         </a>
-        <a class="card-link" href="imgconv.html">
+        <a class="card-link" href="/image/imgconv.html">
             <div class="card"><div class="icon">🔄</div><h2>图片格式转换</h2><p>PNG、JPEG、WebP 图片格式互转，保持原始尺寸。</p></div>
         </a>
     </div>
+    <h2 class="cat-title" id="other">✨ 其它工具</h2>
+    <div class="cards">
+        <a class="card-link" href="/other/shuxue.html">
+            <div class="card"><div class="icon">➗</div><h2>数学符号</h2><p>运算/几何/集合/希腊字母大全，含读音含义，点击复制。</p></div>
+        </a>
+        <a class="card-link" href="/other/teshu.html">
+            <div class="card"><div class="icon">✨</div><h2>特殊符号</h2><p>箭头/货币/星座/音乐等符号大全，点击复制。</p></div>
+        </a>
+        <a class="card-link" href="/other/biaozhi.html">
+            <div class="card"><div class="icon">🚦</div><h2>交通标志</h2><p>禁令/指示/警告标志图片名称对照，学车必备。</p></div>
+        </a>
+        <a class="card-link" href="/other/emoji.html">
+            <div class="card"><div class="icon">😀</div><h2>emoji 符号查询</h2><p>十大类 789 个 emoji，含名称含义，点击复制。</p></div>
+        </a>
+        <a class="card-link" href="/other/zishu.html">
+            <div class="card"><div class="icon">🔢</div><h2>字数统计</h2><p>字符/汉字/单词/行段落实时统计。</p></div>
+        </a>
+        <a class="card-link" href="/other/semang.html">
+            <div class="card"><div class="icon">🎨</div><h2>色盲测试</h2><p>仿石原检测图，色觉自测（仅供参考）。</p></div>
+        </a>
+        <a class="card-link" href="/other/fanyi.html">
+            <div class="card"><div class="icon">🌐</div><h2>在线翻译</h2><p>中文与英、日、韩等 9 种语言互译，长文本自动分段。</p></div>
+        </a>
+    </div>
+
 
     <div class="tutorial">
         <h3>使用教程</h3>

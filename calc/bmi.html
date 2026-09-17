@@ -1,65 +1,29 @@
-<?php
-/* 汉字转拼音 - 服务端转换（复用 ../Pinyin.php 字典） */
-include_once dirname(__FILE__).'/../Pinyin.php';
-
-$text = trim((string)($_POST['text'] ?? $_GET['text'] ?? ''));
-$fmt  = (string)($_POST['fmt'] ?? $_GET['fmt'] ?? 'tone');
-if (!in_array($fmt, ['tone', 'plain', 'first'], true)) $fmt = 'tone';
-if (mb_strlen($text, 'UTF-8') > 500) $text = mb_substr($text, 0, 500, 'UTF-8');
-
-/* 带声调符号 → 无声调（ü 系列转为 v，与输入法习惯一致） */
-function py_plain($s) {
-    static $map = [
-        'ā'=>'a','á'=>'a','ǎ'=>'a','à'=>'a',
-        'ē'=>'e','é'=>'e','ě'=>'e','è'=>'e',
-        'ī'=>'i','í'=>'i','ǐ'=>'i','ì'=>'i',
-        'ō'=>'o','ó'=>'o','ǒ'=>'o','ò'=>'o',
-        'ū'=>'u','ú'=>'u','ǔ'=>'u','ù'=>'u',
-        'ǖ'=>'v','ǘ'=>'v','ǚ'=>'v','ǜ'=>'v','ü'=>'v',
-    ];
-    return strtr($s, $map);
-}
-
-$result = '';
-if ($text !== '') {
-    preg_match_all('/./u', $text, $m);
-    foreach ($m[0] as $ch) {
-        $py = Pinyin::getPinyin($ch);
-        if ($py !== $ch) {
-            if ($fmt === 'plain') $py = py_plain($py);
-            elseif ($fmt === 'first') $py = mb_substr(py_plain($py), 0, 1, 'UTF-8');
-            // 与前一个拼音/英文单词之间补空格
-            if ($result !== '' && !preg_match('/[\s\p{P}]$/u', $result)) $result .= ' ';
-            $result .= $py . ' ';
-        } else {
-            $result .= $ch; // 标点、英文、数字、换行原样保留
-        }
-    }
-    // 清理：标点前多余空格、行尾空格、连续空格
-    $result = preg_replace('/ +(\p{P})/u', '$1', $result);
-    $result = preg_replace('/[ \t]+$/m', '', $result);
-    $result = preg_replace('/ {2,}/', ' ', trim($result));
-}
-$checked = ['tone'=>'', 'plain'=>'', 'first'=>''];
-$checked[$fmt] = ' checked';
-?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>汉字转拼音结果 - 工具专区 - 烙馍网</title>
-<meta name="keywords" content="汉字转拼音，拼音转换，汉字拼音在线，带声调拼音，拼音首字母，烙馍网">
-<meta name="description" content="免费在线汉字转拼音工具：批量把汉字转换为拼音，支持带声调、不带声调、首字母三种格式。">
+<title>BMI计算器 - 在线BMI身体质量指数计算 - 工具专区 - 烙馍网</title>
+<meta name="keywords" content="BMI计算器，BMI指数，身体质量指数，标准体重计算，烙馍网">
+<meta name="description" content="免费在线 BMI 计算器：输入身高体重，按中国成人标准计算 BMI 指数，给出偏瘦/正常/超重/肥胖分级和健康体重范围建议。">
 <meta name="author" content="烙馍网">
-<link rel="canonical" href="https://toolboxy.luomor.com/convert/pinyin.html">
+<link rel="canonical" href="https://toolboxy.luomor.com/calc/bmi.html">
 <meta name="robots" content="index, follow">
-<link rel="stylesheet" href="form.css">
+<link rel="stylesheet" href="/form.css">
 <style>
 .tool-input{ width:100%; padding:10px 14px; border:2px solid var(--border-color); border-radius:8px; font-size:15px; font-family:inherit; background:#fff; }
 .tool-input:focus{ outline:none; border-color:#667eea; }
+.field-row{ display:flex; gap:14px; flex-wrap:wrap; margin-top:22px; }
+.field-row .field{ flex:1; min-width:180px; }
+.field-row label{ font-size:14px; font-weight:600; color:#666; display:block; margin-bottom:6px; }
+.check-group{ display:flex; flex-wrap:wrap; gap:8px; }
 .btn-sub{ background:#fff; color:#667eea; border:2px solid #667eea; padding:12px 26px; font-size:15px; margin:6px 4px 0; }
-.result-box{ margin-top:18px; padding:14px 16px; background:#f8f9fa; border-radius:8px; font-size:18px; line-height:2; word-break:break-all; }
+.result-box{ margin-top:18px; padding:14px 16px; background:#f8f9fa; border-radius:8px; font-size:15px; word-break:break-all; display:none; }
+.result-box.show{ display:block; }
+.result-box.error{ background:#fdecea; color:#c0392b; }
+.result-box pre{ white-space:pre-wrap; word-break:break-all; font-family:Menlo,Consolas,"Courier New",monospace; font-size:14px; }
+.bmi-num{ font-size:34px; font-weight:700; color:#764ba2; }
+.bmi-cat{ font-size:16px; font-weight:600; margin-left:10px; }
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6096731848877113" crossorigin="anonymous"></script>
     <script async src="https://fundingchoicesmessages.google.com/i/pub-6096731848877113?ers=1"></script><script>(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
@@ -117,7 +81,7 @@ var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
   hm.src = "https://hm.baidu.com/hm.js?12a0d13963b589e9095ccecdd327f3fa";
-  var s = document.getElementsByTagName("script")[0];
+  var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
 })();
 </script>
@@ -129,8 +93,8 @@ var _hmt = _hmt || [];
         <a class="back-link" href="/index.html">← 工具专区</a>
         <a class="back-link" href="/index.html">← 首页</a>
     </div>
-    <h1>🗣️ 汉字转拼音</h1>
-    <p class="subtitle">带声调 · 不带声调 · 首字母</p>
+    <h1>⚖️ BMI 计算器</h1>
+    <p class="subtitle">身高体重 → BMI 指数 · 健康建议</p>
 </header>
 
 <nav class="nav-bar" aria-label="主导航">
@@ -216,59 +180,57 @@ var _hmt = _hmt || [];
     </nav>
 
 <div class="card">
-<?php if ($result !== ''): ?>
-<div class="result-box" id="result"><?php echo nl2br(htmlspecialchars($result, ENT_QUOTES, 'UTF-8')); ?></div>
-<div class="btn-row" style="margin-top:14px;text-align:left;">
-    <button type="button" class="submit-btn btn-sub" id="btn-copy">复制结果</button>
+<p class="seo-intro">在线 BMI（身体质量指数）计算器：输入身高（厘米）和体重（公斤），立即得出 BMI 数值，按中国成人标准给出分级判断、健康体重范围和简要建议。</p>
+<div class="field-row">
+    <div class="field">
+        <label for="height">身高（厘米 cm）</label>
+        <input class="tool-input" type="number" id="height" min="100" max="230" step="0.1" placeholder="例如：170">
+    </div>
+    <div class="field">
+        <label for="weight">体重（公斤 kg）</label>
+        <input class="tool-input" type="number" id="weight" min="20" max="300" step="0.1" placeholder="例如：65">
+    </div>
 </div>
-<?php elseif ($text === ''): ?>
-<p class="seo-intro">输入汉字文本，一键转换为带声调拼音、不带声调拼音或拼音首字母。</p>
-<?php endif; ?>
 
-<form method="post" action="pinyin.php" style="margin-top:18px;">
-    <label class="form-label" for="text">输入汉字（最多 500 字）</label>
-    <textarea id="text" name="text" maxlength="500" placeholder="例如：锄禾日当午，汗滴禾下土。"><?php echo htmlspecialchars($text, ENT_QUOTES, 'UTF-8'); ?></textarea>
+<div class="btn-row">
+    <button type="button" class="submit-btn" id="btn-calc">立即计算</button>
+</div>
 
-    <div class="options-grid">
-        <div class="option-group">
-            <div class="option-group-title">拼音格式</div>
-            <div class="radio-group">
-                <label class="radio-label"><input type="radio" name="fmt" value="tone"<?php echo $checked['tone']; ?>><span>带声调（hàn zì）</span></label>
-                <label class="radio-label"><input type="radio" name="fmt" value="plain"<?php echo $checked['plain']; ?>><span>不带声调（han zi）</span></label>
-                <label class="radio-label"><input type="radio" name="fmt" value="first"<?php echo $checked['first']; ?>><span>首字母（h z）</span></label>
-            </div>
-        </div>
-    </div>
-
-    <div class="btn-row">
-        <button type="submit" class="submit-btn">立即转换</button>
-    </div>
-</form>
-
+<div class="result-box" id="result"></div>
     <div class="tutorial">
         <h3>使用教程</h3>
         <ol>
-            <li>在输入框中粘贴或输入汉字（最多 500 字）</li>
-            <li>选择拼音格式：带声调、不带声调或首字母</li>
-            <li>点击 <strong>立即转换</strong> 查看结果，可一键复制</li>
+            <li>输入身高（厘米）和体重（公斤）</li>
+            <li>点击 <strong>立即计算</strong> 得到 BMI 数值和分级</li>
+            <li>参考给出的健康体重范围和建议调整生活习惯</li>
         </ol>
-        <div class="tip"><strong>💡 提示：</strong>拼音字典数据来自 mozillazg/pinyin-data，多音字按本站字帖的常用读音取舍；标点、英文和数字会原样保留。</div>
+        <div class="tip"><strong>💡 提示：</strong>分级采用中国成人 BMI 标准（18.5-23.9 为正常）；BMI 不适用于孕妇、运动员和未成年人，结果仅供参考。</div>
     </div>
 </div>
 </div>
-<script src="js/nav.js" defer></script>
+<script src="/js/nav.js" defer></script>
+
 <script>
-var copyBtn=document.getElementById('btn-copy');
-if(copyBtn){
-    copyBtn.addEventListener('click',function(){
-        var t=document.getElementById('result').innerText, b=this;
-        navigator.clipboard.writeText(t).then(function(){
-            b.textContent='已复制';
-            setTimeout(function(){ b.textContent='复制结果'; },1200);
-        });
-    });
-}
+document.getElementById('btn-calc').addEventListener('click',function(){
+    var r=document.getElementById('result');
+    var h=parseFloat(document.getElementById('height').value),
+        w=parseFloat(document.getElementById('weight').value);
+    function err(msg){ r.className='result-box show error'; r.textContent=msg; }
+    if(!h||h<100||h>230){ err('请输入合理的身高（100-230 厘米）'); return; }
+    if(!w||w<20||w>300){ err('请输入合理的体重（20-300 公斤）'); return; }
+    var m=h/100, bmi=w/(m*m),
+        lo=(18.5*m*m).toFixed(1), hi=(23.9*m*m).toFixed(1),
+        cat,color,advice;
+    if(bmi<18.5){ cat='偏瘦'; color='#3498db'; advice='体重低于正常范围，建议均衡饮食、适当增加营养和力量训练。'; }
+    else if(bmi<24){ cat='正常'; color='#27ae60'; advice='体重在健康范围内，请继续保持规律作息和适量运动。'; }
+    else if(bmi<28){ cat='超重'; color='#f39c12'; advice='体重略高于正常范围，建议控制总热量摄入，每周坚持 150 分钟以上中等强度运动。'; }
+    else{ cat='肥胖'; color='#e74c3c'; advice='体重明显超出正常范围，建议制定科学的减重计划，必要时咨询医生或营养师。'; }
+    r.className='result-box show';
+    r.innerHTML='<span class="bmi-num">'+bmi.toFixed(1)+'</span><span class="bmi-cat" style="color:'+color+'">'+cat+'</span>'
+        +'<div style="margin-top:8px;">身高 '+h+' cm 的健康体重范围：'+lo+' - '+hi+' kg</div>'
+        +'<div style="margin-top:6px;color:#666;">'+advice+'</div>';
+});
 </script>
-<script src="js/site-i18n.js" defer></script>
+<script src="/js/site-i18n.js" defer></script>
 </body>
 </html>

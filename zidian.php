@@ -47,7 +47,7 @@ function zd_svg($data) {
 <meta name="keywords" content="汉字字典，在线字典，查字典，汉字拼音，笔画数，笔顺，组词，成语查询，烙馍网">
 <meta name="description" content="免费在线汉字字典：输入汉字、词语或成语，查询拼音、笔画数、笔顺图、常用组词和成语释义。">
 <meta name="author" content="烙馍网">
-<link rel="canonical" href="https://toolboxy.luomor.com/zidian.html">
+<link rel="canonical" href="https://toolboxy.luomor.com/query/zidian.html">
 <meta name="robots" content="index, follow">
 <link rel="stylesheet" href="form.css">
 <style>
@@ -130,8 +130,8 @@ var _hmt = _hmt || [];
 <div class="container">
 <header class="header">
     <div class="back-links">
-        <a class="back-link" href="index.html">← 工具专区</a>
-        <a class="back-link" href="index.html">← 首页</a>
+        <a class="back-link" href="/index.html">← 工具专区</a>
+        <a class="back-link" href="/index.html">← 首页</a>
     </div>
     <h1>📖 汉字字典</h1>
     <p class="subtitle">拼音 · 笔画 · 笔顺 · 组词 · 成语</p>
@@ -140,56 +140,81 @@ var _hmt = _hmt || [];
 <nav class="nav-bar" aria-label="主导航">
         <a href="https://www.luomor.com/">烙馍网首页</a>
         <div class="nav-dropdown">
-            <a href="index.html">工具专区</a>
-            <div class="nav-sub nav-grid">
-                <a href="timestamp.html">时间戳转换</a>
-                <a href="json.html">JSON 格式化</a>
-                <a href="codefmt.html">格式化代码</a>
-                <a href="markdown.html">Markdown 编辑器</a>
-                <a href="htmledit.html">HTML 编辑器</a>
-                <a href="base64.html">Base64 编解码</a>
-                <a href="aes.html">加密解密</a>
-                <a href="password.html">密码生成器</a>
-                <a href="jisuan.html">在线计算器</a>
-                <a href="fangdai.html">房贷计算</a>
-                <a href="yanglao.html">养老金计算</a>
-                <a href="geshui.html">个税计算</a>
-                <a href="qiyeshui.html">企业所得税</a>
-                <a href="zengzhishui.html">增值税计算</a>
-                <a href="shangpin.html">商品税计算</a>
-                <a href="bmi.html">BMI 计算器</a>
-                <a href="huobi.html">币种转换</a>
-                <a href="shizhong.html">世界时钟</a>
-                <a href="rili.html">万年历</a>
-                <a href="youbian.html">邮编查询</a>
-                <a href="diqu.html">地区编码查询</a>
-                <a href="jichang.html">机场三字码</a>
-                <a href="guojia.html">国家编码查询</a>
-                <a href="sfz.html">身份证号解析</a>
-                <a href="shouji.html">手机号验证</a>
-                <a href="tld.html">域名后缀查询</a>
-                <a href="whois.html">域名查询</a>
-                <a href="dns.html">域名解析查询</a>
-                <a href="myip.html">本机IP查询</a>
-                <a href="ipcha.html">IP 查询</a>
-                <a href="lianlu.html">网络链路查询</a>
-                <a href="shuxue.html">数学符号</a>
-                <a href="daxie.html">大写数字</a>
-                <a href="teshu.html">特殊符号</a>
-                <a href="biaozhi.html">交通标志</a>
-                <a href="emoji.html">emoji 符号</a>
-                <a href="zhongliang.html">重量转换</a>
-                <a href="wendu.html">温度转换</a>
-                <a href="fengsu.html">风速转换</a>
-                <a href="zishu.html">字数统计</a>
-                <a href="semang.html">色盲测试</a>
-                <a href="chepai.html">车牌查询</a>
-                <a href="fanyi.html">在线翻译</a>
-                <a href="jianfan.html">简繁转换</a>
-                <a href="pinyin.html">汉字转拼音</a>
-                <a href="zidian.html">汉字字典</a>
-                <a href="imgzip.html">图片压缩</a>
-                <a href="imgconv.html">图片格式转换</a>
+            <a href="javascript:void(0)">开发工具</a>
+            <div class="nav-sub">
+                <a href="/dev/timestamp.html">时间戳转换</a>
+                <a href="/dev/json.html">JSON 格式化</a>
+                <a href="/dev/codefmt.html">格式化代码</a>
+                <a href="/dev/markdown.html">Markdown 编辑器</a>
+                <a href="/dev/htmledit.html">HTML 编辑器</a>
+                <a href="/dev/base64.html">Base64 编解码</a>
+                <a href="/dev/aes.html">加密解密</a>
+                <a href="/dev/password.html">密码生成器</a>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <a href="javascript:void(0)">计算工具</a>
+            <div class="nav-sub">
+                <a href="/calc/jisuan.html">在线计算器</a>
+                <a href="/calc/fangdai.html">房贷计算</a>
+                <a href="/calc/yanglao.html">养老金计算</a>
+                <a href="/calc/geshui.html">个税计算</a>
+                <a href="/calc/qiyeshui.html">企业所得税</a>
+                <a href="/calc/zengzhishui.html">增值税计算</a>
+                <a href="/calc/shangpin.html">商品税计算</a>
+                <a href="/calc/bmi.html">BMI 计算器</a>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <a href="javascript:void(0)">查询工具</a>
+            <div class="nav-sub">
+                <a href="/query/youbian.html">邮编查询</a>
+                <a href="/query/diqu.html">地区编码查询</a>
+                <a href="/query/jichang.html">机场三字码</a>
+                <a href="/query/guojia.html">国家编码查询</a>
+                <a href="/query/sfz.html">身份证号解析</a>
+                <a href="/query/shouji.html">手机号验证</a>
+                <a href="/query/chepai.html">车牌查询</a>
+                <a href="/query/tld.html">域名后缀查询</a>
+                <a href="/query/whois.html">域名查询</a>
+                <a href="/query/dns.html">域名解析查询</a>
+                <a href="/query/myip.html">本机IP查询</a>
+                <a href="/query/ipcha.html">IP 查询</a>
+                <a href="/query/lianlu.html">网络链路查询</a>
+                <a href="/query/zidian.html">汉字字典</a>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <a href="javascript:void(0)">换算工具</a>
+            <div class="nav-sub">
+                <a href="/convert/huobi.html">币种转换</a>
+                <a href="/convert/shizhong.html">世界时钟</a>
+                <a href="/convert/rili.html">万年历</a>
+                <a href="/convert/zhongliang.html">重量转换</a>
+                <a href="/convert/wendu.html">温度转换</a>
+                <a href="/convert/fengsu.html">风速转换</a>
+                <a href="/convert/daxie.html">大写数字</a>
+                <a href="/convert/jianfan.html">简繁转换</a>
+                <a href="/convert/pinyin.html">汉字转拼音</a>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <a href="javascript:void(0)">图片工具</a>
+            <div class="nav-sub">
+                <a href="/image/imgzip.html">图片压缩</a>
+                <a href="/image/imgconv.html">图片格式转换</a>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <a href="javascript:void(0)">其它工具</a>
+            <div class="nav-sub">
+                <a href="/other/shuxue.html">数学符号</a>
+                <a href="/other/teshu.html">特殊符号</a>
+                <a href="/other/biaozhi.html">交通标志</a>
+                <a href="/other/emoji.html">emoji 符号</a>
+                <a href="/other/zishu.html">字数统计</a>
+                <a href="/other/semang.html">色盲测试</a>
+                <a href="/other/fanyi.html">在线翻译</a>
             </div>
         </div>
     </nav>

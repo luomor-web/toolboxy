@@ -1,65 +1,33 @@
-<?php
-/* 汉字转拼音 - 服务端转换（复用 ../Pinyin.php 字典） */
-include_once dirname(__FILE__).'/../Pinyin.php';
-
-$text = trim((string)($_POST['text'] ?? $_GET['text'] ?? ''));
-$fmt  = (string)($_POST['fmt'] ?? $_GET['fmt'] ?? 'tone');
-if (!in_array($fmt, ['tone', 'plain', 'first'], true)) $fmt = 'tone';
-if (mb_strlen($text, 'UTF-8') > 500) $text = mb_substr($text, 0, 500, 'UTF-8');
-
-/* 带声调符号 → 无声调（ü 系列转为 v，与输入法习惯一致） */
-function py_plain($s) {
-    static $map = [
-        'ā'=>'a','á'=>'a','ǎ'=>'a','à'=>'a',
-        'ē'=>'e','é'=>'e','ě'=>'e','è'=>'e',
-        'ī'=>'i','í'=>'i','ǐ'=>'i','ì'=>'i',
-        'ō'=>'o','ó'=>'o','ǒ'=>'o','ò'=>'o',
-        'ū'=>'u','ú'=>'u','ǔ'=>'u','ù'=>'u',
-        'ǖ'=>'v','ǘ'=>'v','ǚ'=>'v','ǜ'=>'v','ü'=>'v',
-    ];
-    return strtr($s, $map);
-}
-
-$result = '';
-if ($text !== '') {
-    preg_match_all('/./u', $text, $m);
-    foreach ($m[0] as $ch) {
-        $py = Pinyin::getPinyin($ch);
-        if ($py !== $ch) {
-            if ($fmt === 'plain') $py = py_plain($py);
-            elseif ($fmt === 'first') $py = mb_substr(py_plain($py), 0, 1, 'UTF-8');
-            // 与前一个拼音/英文单词之间补空格
-            if ($result !== '' && !preg_match('/[\s\p{P}]$/u', $result)) $result .= ' ';
-            $result .= $py . ' ';
-        } else {
-            $result .= $ch; // 标点、英文、数字、换行原样保留
-        }
-    }
-    // 清理：标点前多余空格、行尾空格、连续空格
-    $result = preg_replace('/ +(\p{P})/u', '$1', $result);
-    $result = preg_replace('/[ \t]+$/m', '', $result);
-    $result = preg_replace('/ {2,}/', ' ', trim($result));
-}
-$checked = ['tone'=>'', 'plain'=>'', 'first'=>''];
-$checked[$fmt] = ' checked';
-?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>汉字转拼音结果 - 工具专区 - 烙馍网</title>
-<meta name="keywords" content="汉字转拼音，拼音转换，汉字拼音在线，带声调拼音，拼音首字母，烙馍网">
-<meta name="description" content="免费在线汉字转拼音工具：批量把汉字转换为拼音，支持带声调、不带声调、首字母三种格式。">
+<title>色盲测试 - 在线色盲色弱自测 - 工具专区 - 烙馍网</title>
+<meta name="keywords" content="色盲测试，色弱测试，在线色盲检测，石原色盲测试，色觉检查，烙馍网">
+<meta name="description" content="免费在线色盲测试：仿石原色盲检测图，多张彩色斑点数字图，根据你看到的数字判断色觉情况，结果仅供娱乐参考。">
 <meta name="author" content="烙馍网">
-<link rel="canonical" href="https://toolboxy.luomor.com/convert/pinyin.html">
+<link rel="canonical" href="https://toolboxy.luomor.com/other/semang.html">
 <meta name="robots" content="index, follow">
-<link rel="stylesheet" href="form.css">
+<link rel="stylesheet" href="/form.css">
 <style>
 .tool-input{ width:100%; padding:10px 14px; border:2px solid var(--border-color); border-radius:8px; font-size:15px; font-family:inherit; background:#fff; }
 .tool-input:focus{ outline:none; border-color:#667eea; }
+.field-row{ display:flex; gap:14px; flex-wrap:wrap; margin-top:22px; }
+.field-row .field{ flex:1; min-width:150px; }
+.field-row label{ font-size:14px; font-weight:600; color:#666; display:block; margin-bottom:6px; }
 .btn-sub{ background:#fff; color:#667eea; border:2px solid #667eea; padding:12px 26px; font-size:15px; margin:6px 4px 0; }
-.result-box{ margin-top:18px; padding:14px 16px; background:#f8f9fa; border-radius:8px; font-size:18px; line-height:2; word-break:break-all; }
+.result-box{ margin-top:18px; padding:16px 18px; background:#f8f9fa; border-radius:8px; font-size:15px; display:none; }
+.result-box.show{ display:block; }
+.result-box.error{ background:#fdecea; color:#c0392b; }
+.stat-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:10px; margin-top:16px; }
+.stat-card{ background:#f8f9fa; border-radius:10px; padding:14px; text-align:center; }
+.stat-card .v{ font-size:24px; font-weight:700; color:#764ba2; font-family:Menlo,Consolas,monospace; }
+.stat-card .t{ font-size:13px; color:#888; margin-top:4px; }
+.kv-table{ width:100%; border-collapse:collapse; margin-top:14px; font-size:15px; }
+.kv-table th,.kv-table td{ border:1px solid var(--border-color); padding:10px 14px; text-align:left; }
+.kv-table th{ background:#f8f9fa; color:#666; font-weight:600; }
+.sm-plate{ text-align:center; margin:16px 0; } .sm-plate canvas{ border-radius:50%; box-shadow:var(--shadow); max-width:100%; } .sm-answer{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:10px; } .sm-answer .mini-btn{ padding:10px 22px; font-size:16px; }
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6096731848877113" crossorigin="anonymous"></script>
     <script async src="https://fundingchoicesmessages.google.com/i/pub-6096731848877113?ers=1"></script><script>(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
@@ -117,7 +85,7 @@ var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
   hm.src = "https://hm.baidu.com/hm.js?12a0d13963b589e9095ccecdd327f3fa";
-  var s = document.getElementsByTagName("script")[0];
+  var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
 })();
 </script>
@@ -129,8 +97,8 @@ var _hmt = _hmt || [];
         <a class="back-link" href="/index.html">← 工具专区</a>
         <a class="back-link" href="/index.html">← 首页</a>
     </div>
-    <h1>🗣️ 汉字转拼音</h1>
-    <p class="subtitle">带声调 · 不带声调 · 首字母</p>
+    <h1>🎨 色盲测试</h1>
+    <p class="subtitle">仿石原检测图 · 色觉自测</p>
 </header>
 
 <nav class="nav-bar" aria-label="主导航">
@@ -216,59 +184,88 @@ var _hmt = _hmt || [];
     </nav>
 
 <div class="card">
-<?php if ($result !== ''): ?>
-<div class="result-box" id="result"><?php echo nl2br(htmlspecialchars($result, ENT_QUOTES, 'UTF-8')); ?></div>
-<div class="btn-row" style="margin-top:14px;text-align:left;">
-    <button type="button" class="submit-btn btn-sub" id="btn-copy">复制结果</button>
-</div>
-<?php elseif ($text === ''): ?>
-<p class="seo-intro">输入汉字文本，一键转换为带声调拼音、不带声调拼音或拼音首字母。</p>
-<?php endif; ?>
-
-<form method="post" action="pinyin.php" style="margin-top:18px;">
-    <label class="form-label" for="text">输入汉字（最多 500 字）</label>
-    <textarea id="text" name="text" maxlength="500" placeholder="例如：锄禾日当午，汗滴禾下土。"><?php echo htmlspecialchars($text, ENT_QUOTES, 'UTF-8'); ?></textarea>
-
-    <div class="options-grid">
-        <div class="option-group">
-            <div class="option-group-title">拼音格式</div>
-            <div class="radio-group">
-                <label class="radio-label"><input type="radio" name="fmt" value="tone"<?php echo $checked['tone']; ?>><span>带声调（hàn zì）</span></label>
-                <label class="radio-label"><input type="radio" name="fmt" value="plain"<?php echo $checked['plain']; ?>><span>不带声调（han zi）</span></label>
-                <label class="radio-label"><input type="radio" name="fmt" value="first"<?php echo $checked['first']; ?>><span>首字母（h z）</span></label>
-            </div>
-        </div>
-    </div>
-
-    <div class="btn-row">
-        <button type="submit" class="submit-btn">立即转换</button>
-    </div>
-</form>
-
+<p class="seo-intro">在线色盲色弱自测：仿石原色盲检测图（Ishihara），多张彩色斑点数字图，输入你看到的数字逐题作答，最后给出参考结论。结果仅供娱乐参考，不能替代医院专业检查。</p>
+<p class="seo-intro" style="margin-bottom:10px;">看清斑点图中的数字，点击下方你看到的数字作答；看不清就点「看不清」。</p>
+<div class="sm-plate"><canvas id="plate" width="340" height="340"></canvas></div>
+<div class="sm-answer" id="answers"></div>
+<div id="out"></div>
     <div class="tutorial">
         <h3>使用教程</h3>
         <ol>
-            <li>在输入框中粘贴或输入汉字（最多 500 字）</li>
-            <li>选择拼音格式：带声调、不带声调或首字母</li>
-            <li>点击 <strong>立即转换</strong> 查看结果，可一键复制</li>
+            <li>在光线正常的环境下，看手机/电脑屏幕上的斑点图</li>
+            <li>点击你看到的数字作答；看不清就点「看不清」</li>
+            <li>全部作答后查看参考结论</li>
         </ol>
-        <div class="tip"><strong>💡 提示：</strong>拼音字典数据来自 mozillazg/pinyin-data，多音字按本站字帖的常用读音取舍；标点、英文和数字会原样保留。</div>
+        <div class="tip"><strong>💡 提示：</strong>本测试为仿石原图的简化实现，受屏幕色彩影响较大，结果仅供娱乐参考；色觉异常的确诊请到医院眼科做正规检查。</div>
     </div>
 </div>
 </div>
-<script src="js/nav.js" defer></script>
+<script src="/js/nav.js" defer></script>
 <script>
-var copyBtn=document.getElementById('btn-copy');
-if(copyBtn){
-    copyBtn.addEventListener('click',function(){
-        var t=document.getElementById('result').innerText, b=this;
-        navigator.clipboard.writeText(t).then(function(){
-            b.textContent='已复制';
-            setTimeout(function(){ b.textContent='复制结果'; },1200);
-        });
-    });
+// 仿石原图：背景点与数字点取两组不同色相，明度抖动
+var PLATES=[{n:'12',bg:[[90,150],[150,210]],fg:[[0,30],[330,360]]},
+            {n:'8', bg:[[150,200]],fg:[[20,50]]},
+            {n:'29',bg:[[90,150]],fg:[[330,360]]},
+            {n:'5', bg:[[200,240]],fg:[[40,70]]},
+            {n:'74',bg:[[100,160]],fg:[[340,360]]}],
+    cv=document.getElementById('plate'), ctx=cv.getContext('2d'), idx=0, score=0, wrong=[];
+function hsl(h,s,l){ return 'hsl('+h+','+s+'%,'+l+'%)'; }
+function drawPlate(cfg){
+    ctx.clearRect(0,0,340,340);
+    // 离屏画数字掩码
+    var off=document.createElement('canvas'); off.width=off.height=340;
+    var oc=off.getContext('2d');
+    oc.font='bold 200px Arial'; oc.textAlign='center'; oc.textBaseline='middle';
+    oc.fillStyle='#000'; oc.fillText(cfg.n,170,175);
+    var mask=oc.getImageData(0,0,340,340).data;
+    var dots=0;
+    while(dots<900){
+        var r=3+Math.random()*10, x=r+Math.random()*(340-2*r), y=r+Math.random()*(340-2*r),
+            dist=Math.hypot(x-170,y-170);
+        if(dist+r>166) continue;
+        var xi=Math.floor(x), yi=Math.floor(y),
+            inNum=mask[(yi*340+xi)*4+3]>128,
+            pal=inNum?cfg.fg:cfg.bg,
+            range=pal[Math.floor(Math.random()*pal.length)],
+            h=range[0]+Math.random()*(range[1]-range[0]),
+            l=40+Math.random()*25;
+        ctx.beginPath(); ctx.arc(x,y,r,0,7);
+        ctx.fillStyle=hsl(h,65,l); ctx.fill();
+        dots++;
+    }
 }
+function ask(){
+    drawPlate(PLATES[idx]);
+    document.getElementById('answers').innerHTML='<input class="tool-input" type="text" id="sm-in" maxlength="2" inputmode="numeric" placeholder="你看到的数字" style="width:160px;text-align:center;font-size:20px;" autocomplete="off">'
+        +'<button type="button" class="mini-btn" id="sm-ok">确定</button>'
+        +'<button type="button" class="mini-btn" id="sm-skip">看不清</button>';
+    var smIn=document.getElementById('sm-in');
+    smIn.focus();
+    function submit(got){
+            var want=PLATES[idx].n;
+            var correct=got===want;
+            if(!correct) wrong.push(PLATES[idx].n);
+            idx++;
+            document.getElementById('out').innerHTML='';
+            if(idx<PLATES.length) ask();
+            else{
+                var out=document.getElementById('out');
+                if(!wrong.length)
+                    out.innerHTML='<div class="result-box show" style="margin-top:18px;"><b style="color:#27ae60">✓ 全部看清，色觉大概率正常。</b>本测试仅供娱乐参考。</div>';
+                else
+                    out.innerHTML='<div class="result-box show error" style="margin-top:18px;">有 '+wrong.length+' 张图未看清（'+wrong.join('、')+'）。可能存在色觉异常，建议到眼科做专业色觉检查。<br><span style="color:#888;font-size:13px;">本测试仅供娱乐参考，不能替代医学诊断。</span></div>';
+            }
+    }
+    document.getElementById('sm-ok').addEventListener('click',function(){
+        var v=smIn.value.trim();
+        if(!/^\d{1,2}$/.test(v)){ smIn.focus(); return; }
+        submit(v);
+    });
+    document.getElementById('sm-skip').addEventListener('click',function(){ submit(''); });
+    smIn.addEventListener('keydown',function(e){ if(e.key==='Enter') document.getElementById('sm-ok').click(); });
+}
+ask();
 </script>
-<script src="js/site-i18n.js" defer></script>
+<script src="/js/site-i18n.js" defer></script>
 </body>
 </html>

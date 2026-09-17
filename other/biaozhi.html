@@ -1,65 +1,41 @@
-<?php
-/* 汉字转拼音 - 服务端转换（复用 ../Pinyin.php 字典） */
-include_once dirname(__FILE__).'/../Pinyin.php';
-
-$text = trim((string)($_POST['text'] ?? $_GET['text'] ?? ''));
-$fmt  = (string)($_POST['fmt'] ?? $_GET['fmt'] ?? 'tone');
-if (!in_array($fmt, ['tone', 'plain', 'first'], true)) $fmt = 'tone';
-if (mb_strlen($text, 'UTF-8') > 500) $text = mb_substr($text, 0, 500, 'UTF-8');
-
-/* 带声调符号 → 无声调（ü 系列转为 v，与输入法习惯一致） */
-function py_plain($s) {
-    static $map = [
-        'ā'=>'a','á'=>'a','ǎ'=>'a','à'=>'a',
-        'ē'=>'e','é'=>'e','ě'=>'e','è'=>'e',
-        'ī'=>'i','í'=>'i','ǐ'=>'i','ì'=>'i',
-        'ō'=>'o','ó'=>'o','ǒ'=>'o','ò'=>'o',
-        'ū'=>'u','ú'=>'u','ǔ'=>'u','ù'=>'u',
-        'ǖ'=>'v','ǘ'=>'v','ǚ'=>'v','ǜ'=>'v','ü'=>'v',
-    ];
-    return strtr($s, $map);
-}
-
-$result = '';
-if ($text !== '') {
-    preg_match_all('/./u', $text, $m);
-    foreach ($m[0] as $ch) {
-        $py = Pinyin::getPinyin($ch);
-        if ($py !== $ch) {
-            if ($fmt === 'plain') $py = py_plain($py);
-            elseif ($fmt === 'first') $py = mb_substr(py_plain($py), 0, 1, 'UTF-8');
-            // 与前一个拼音/英文单词之间补空格
-            if ($result !== '' && !preg_match('/[\s\p{P}]$/u', $result)) $result .= ' ';
-            $result .= $py . ' ';
-        } else {
-            $result .= $ch; // 标点、英文、数字、换行原样保留
-        }
-    }
-    // 清理：标点前多余空格、行尾空格、连续空格
-    $result = preg_replace('/ +(\p{P})/u', '$1', $result);
-    $result = preg_replace('/[ \t]+$/m', '', $result);
-    $result = preg_replace('/ {2,}/', ' ', trim($result));
-}
-$checked = ['tone'=>'', 'plain'=>'', 'first'=>''];
-$checked[$fmt] = ' checked';
-?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>汉字转拼音结果 - 工具专区 - 烙馍网</title>
-<meta name="keywords" content="汉字转拼音，拼音转换，汉字拼音在线，带声调拼音，拼音首字母，烙馍网">
-<meta name="description" content="免费在线汉字转拼音工具：批量把汉字转换为拼音，支持带声调、不带声调、首字母三种格式。">
+<title>交通标志查询 - 道路交通标志图片名称大全 - 工具专区 - 烙馍网</title>
+<meta name="keywords" content="交通标志查询，交通标志大全，道路交通标志图片，禁令标志，指示标志，警告标志，科目一，烙馍网">
+<meta name="description" content="免费在线交通标志查询：常见道路交通标志（禁令/指示/警告）图片和名称对照，默认展示全部，支持名称筛选，适合学车科目一复习。">
 <meta name="author" content="烙馍网">
-<link rel="canonical" href="https://toolboxy.luomor.com/convert/pinyin.html">
+<link rel="canonical" href="https://toolboxy.luomor.com/other/biaozhi.html">
 <meta name="robots" content="index, follow">
-<link rel="stylesheet" href="form.css">
+<link rel="stylesheet" href="/form.css">
 <style>
 .tool-input{ width:100%; padding:10px 14px; border:2px solid var(--border-color); border-radius:8px; font-size:15px; font-family:inherit; background:#fff; }
 .tool-input:focus{ outline:none; border-color:#667eea; }
+.field-row{ display:flex; gap:14px; flex-wrap:wrap; margin-top:22px; }
+.field-row .field{ flex:1; min-width:150px; }
+.field-row label{ font-size:14px; font-weight:600; color:#666; display:block; margin-bottom:6px; }
 .btn-sub{ background:#fff; color:#667eea; border:2px solid #667eea; padding:12px 26px; font-size:15px; margin:6px 4px 0; }
-.result-box{ margin-top:18px; padding:14px 16px; background:#f8f9fa; border-radius:8px; font-size:18px; line-height:2; word-break:break-all; }
+.result-box{ margin-top:18px; padding:16px 18px; background:#f8f9fa; border-radius:8px; font-size:15px; display:none; }
+.result-box.show{ display:block; }
+.result-box.error{ background:#fdecea; color:#c0392b; }
+.sym-cat{ margin:22px 0 10px; font-size:16px; font-weight:700; color:#2c3e50; border-left:4px solid #764ba2; padding-left:10px; }
+.sym-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:10px; }
+.sym-card{ background:#fff; border:2px solid var(--border-color); border-radius:10px; padding:12px 8px; text-align:center; cursor:pointer; transition:all .2s; }
+.sym-card:hover{ border-color:#667eea; transform:translateY(-2px); box-shadow:0 4px 12px rgba(0,0,0,.08); }
+.sym-card .s{ font-size:28px; line-height:1.3; color:#2c3e50; }
+.sym-card .r{ font-size:13px; color:#764ba2; font-weight:600; margin-top:4px; }
+.sym-card .m{ font-size:12px; color:#999; margin-top:2px; }
+.stat-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:10px; margin-top:16px; }
+.stat-card{ background:#f8f9fa; border-radius:10px; padding:14px; text-align:center; }
+.stat-card .v{ font-size:24px; font-weight:700; color:#764ba2; font-family:Menlo,Consolas,monospace; }
+.stat-card .t{ font-size:13px; color:#888; margin-top:4px; }
+.kv-table{ width:100%; border-collapse:collapse; margin-top:14px; font-size:15px; }
+.kv-table th,.kv-table td{ border:1px solid var(--border-color); padding:10px 14px; text-align:left; }
+.kv-table th{ background:#f8f9fa; color:#666; font-weight:600; }
+.copy-toast{ position:fixed; bottom:30px; left:50%; transform:translateX(-50%); background:#2c3e50; color:#fff; padding:10px 24px; border-radius:24px; font-size:14px; display:none; z-index:2000; }
+.sign-card{ background:#fff; border:2px solid var(--border-color); border-radius:10px; padding:14px 8px; text-align:center; transition:all .2s; } .sign-card:hover{ border-color:#667eea; transform:translateY(-2px); } .sign-card svg{ width:72px; height:72px; } .sign-card .n{ font-size:14px; font-weight:600; margin-top:8px; color:#2c3e50; } .sign-card .c{ font-size:12px; margin-top:4px; } .sign-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); gap:10px; }
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6096731848877113" crossorigin="anonymous"></script>
     <script async src="https://fundingchoicesmessages.google.com/i/pub-6096731848877113?ers=1"></script><script>(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
@@ -117,7 +93,7 @@ var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
   hm.src = "https://hm.baidu.com/hm.js?12a0d13963b589e9095ccecdd327f3fa";
-  var s = document.getElementsByTagName("script")[0];
+  var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
 })();
 </script>
@@ -129,8 +105,8 @@ var _hmt = _hmt || [];
         <a class="back-link" href="/index.html">← 工具专区</a>
         <a class="back-link" href="/index.html">← 首页</a>
     </div>
-    <h1>🗣️ 汉字转拼音</h1>
-    <p class="subtitle">带声调 · 不带声调 · 首字母</p>
+    <h1>🚦 交通标志查询</h1>
+    <p class="subtitle">禁令 · 指示 · 警告 · 默认展示全部</p>
 </header>
 
 <nav class="nav-bar" aria-label="主导航">
@@ -216,59 +192,87 @@ var _hmt = _hmt || [];
     </nav>
 
 <div class="card">
-<?php if ($result !== ''): ?>
-<div class="result-box" id="result"><?php echo nl2br(htmlspecialchars($result, ENT_QUOTES, 'UTF-8')); ?></div>
-<div class="btn-row" style="margin-top:14px;text-align:left;">
-    <button type="button" class="submit-btn btn-sub" id="btn-copy">复制结果</button>
+<p class="seo-intro">在线交通标志查询：常见道路交通标志的图片与名称对照表，涵盖禁令标志（红圈）、指示标志（蓝底）和警告标志（黄三角），默认展示全部，输入名称可筛选，适合驾驶员考试复习。</p>
+<div class="field-row" style="margin-top:0;">
+    <div class="field">
+        <label for="kw">筛选标志（输入名称关键词）</label>
+        <input class="tool-input" type="text" id="kw" placeholder="默认展示全部，如：禁止 / 让行 / 左转" autocomplete="off">
+    </div>
 </div>
-<?php elseif ($text === ''): ?>
-<p class="seo-intro">输入汉字文本，一键转换为带声调拼音、不带声调拼音或拼音首字母。</p>
-<?php endif; ?>
-
-<form method="post" action="pinyin.php" style="margin-top:18px;">
-    <label class="form-label" for="text">输入汉字（最多 500 字）</label>
-    <textarea id="text" name="text" maxlength="500" placeholder="例如：锄禾日当午，汗滴禾下土。"><?php echo htmlspecialchars($text, ENT_QUOTES, 'UTF-8'); ?></textarea>
-
-    <div class="options-grid">
-        <div class="option-group">
-            <div class="option-group-title">拼音格式</div>
-            <div class="radio-group">
-                <label class="radio-label"><input type="radio" name="fmt" value="tone"<?php echo $checked['tone']; ?>><span>带声调（hàn zì）</span></label>
-                <label class="radio-label"><input type="radio" name="fmt" value="plain"<?php echo $checked['plain']; ?>><span>不带声调（han zi）</span></label>
-                <label class="radio-label"><input type="radio" name="fmt" value="first"<?php echo $checked['first']; ?>><span>首字母（h z）</span></label>
-            </div>
-        </div>
-    </div>
-
-    <div class="btn-row">
-        <button type="submit" class="submit-btn">立即转换</button>
-    </div>
-</form>
-
+<div id="content"></div>
     <div class="tutorial">
         <h3>使用教程</h3>
         <ol>
-            <li>在输入框中粘贴或输入汉字（最多 500 字）</li>
-            <li>选择拼音格式：带声调、不带声调或首字母</li>
-            <li>点击 <strong>立即转换</strong> 查看结果，可一键复制</li>
+            <li>默认展示全部交通标志（红圈禁令 / 蓝底指示 / 黄三角警告）</li>
+            <li>输入名称关键词（如「禁止」「让行」「左转」）可筛选</li>
+            <li>科目一复习时对照图片记名称和含义</li>
         </ol>
-        <div class="tip"><strong>💡 提示：</strong>拼音字典数据来自 mozillazg/pinyin-data，多音字按本站字帖的常用读音取舍；标点、英文和数字会原样保留。</div>
+        <div class="tip"><strong>💡 提示：</strong>标志图片为本站原创简化示意图，与国标 GB 5768 实物略有差异，仅用于学习参考；考试和驾驶请以官方教材为准。</div>
     </div>
 </div>
 </div>
-<script src="js/nav.js" defer></script>
+<script src="/js/nav.js" defer></script>
+
 <script>
-var copyBtn=document.getElementById('btn-copy');
-if(copyBtn){
-    copyBtn.addEventListener('click',function(){
-        var t=document.getElementById('result').innerText, b=this;
-        navigator.clipboard.writeText(t).then(function(){
-            b.textContent='已复制';
-            setTimeout(function(){ b.textContent='复制结果'; },1200);
+function ring(inner){ return '<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="29" fill="#e60012"/><circle cx="32" cy="32" r="22" fill="#fff"/>'+inner+'</svg>'; }
+function blueC(inner){ return '<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="29" fill="#1e50a2"/>'+inner+'</svg>'; }
+function warn(inner){ return '<svg viewBox="0 0 64 64"><polygon points="32,6 61,56 3,56" fill="#ffd400" stroke="#e60012" stroke-width="4" stroke-linejoin="round"/>'+inner+'</svg>'; }
+function slash(){ return '<path d="M14 50 L50 14" stroke="#e60012" stroke-width="6"/>'; }
+function person(x,y,sc){ return '<g transform="translate('+x+','+y+') scale('+sc+')" fill="#000"><circle cx="0" cy="-8" r="4"/><path d="M0 -4 L0 8 M0 -1 L-8 5 M0 -1 L8 5 M0 8 L-6 18 M0 8 L6 18" stroke="#000" stroke-width="3.4" fill="none" stroke-linecap="round"/></g>'; }
+var upArrow='<path d="M32 14 L44 30 L36 30 L36 50 L28 50 L28 30 L20 30 Z" fill="#fff"/>',
+    downRightArrow='<path d="M18 16 L18 34 L28 34 L14 52 L46 22 L36 22 L36 16 Z" fill="#fff" transform="rotate(45 32 32)"/>';
+var DATA=[
+["禁令标志",[
+["禁止通行",ring('<circle cx="32" cy="32" r="22" fill="#e60012"/><rect x="10" y="26" width="44" height="12" fill="#fff"/>')],
+["禁止驶入",'<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="29" fill="#e60012"/><rect x="10" y="27" width="44" height="10" fill="#fff"/></svg>'],
+["禁止停车",'<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="29" fill="#e60012"/><circle cx="32" cy="32" r="22" fill="#1e50a2"/><path d="M16 16 L48 48 M48 16 L16 48" stroke="#e60012" stroke-width="7"/></svg>'],
+["禁止长时间停车",'<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="29" fill="#e60012"/><circle cx="32" cy="32" r="22" fill="#1e50a2"/><path d="M16 16 L48 48" stroke="#e60012" stroke-width="7"/></svg>'],
+["限速 40",ring('<text x="32" y="42" font-size="26" text-anchor="middle" font-weight="bold" fill="#000">40</text>')],
+["禁止鸣笛",ring('<path d="M20 38 L20 26 L34 18 L34 46 Z" fill="#000"/><path d="M38 26 Q46 32 38 38" stroke="#000" stroke-width="3" fill="none"/>'+slash())],
+["禁止左转",ring('<path d="M46 46 L46 30 Q46 18 34 18 L24 18 M24 18 L30 12 M24 18 L30 24" stroke="#000" stroke-width="5" fill="none"/>'+slash())],
+["禁止右转",ring('<path d="M18 46 L18 30 Q18 18 30 18 L40 18 M40 18 L34 12 M40 18 L34 24" stroke="#000" stroke-width="5" fill="none"/>'+slash())],
+["禁止掉头",ring('<path d="M24 48 L24 28 Q24 16 34 16 Q44 16 44 28 L44 40 M44 40 L38 32 M44 40 L50 32" stroke="#000" stroke-width="5" fill="none"/>'+slash())],
+["禁止超车",ring('<rect x="16" y="24" width="12" height="18" rx="3" fill="#000"/><rect x="34" y="24" width="12" height="18" rx="3" fill="#e60012"/>')],
+["停车让行",'<svg viewBox="0 0 64 64"><polygon points="32,4 52,12 60,32 52,52 32,60 12,52 4,32 12,12" fill="#e60012"/><text x="32" y="43" font-size="26" text-anchor="middle" font-weight="bold" fill="#fff">停</text></svg>'],
+["减速让行",warn('<text x="32" y="46" font-size="22" text-anchor="middle" font-weight="bold" fill="#000">让</text>')]
+]],
+["指示标志",[
+["直行",blueC(upArrow)],
+["左转",blueC('<path d="M50 50 L50 34 Q50 18 34 18 L22 18 M22 18 L30 10 M22 18 L30 26" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round"/>')],
+["右转",blueC('<path d="M14 50 L14 34 Q14 18 30 18 L42 18 M42 18 L34 10 M42 18 L34 26" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round"/>')],
+["直行和左转",blueC(upArrow+'<path d="M46 50 L46 38 Q46 26 36 26 L30 26 M30 26 L36 20 M30 26 L36 32" stroke="#fff" stroke-width="4" fill="none"/>')],
+["环岛行驶",blueC('<path d="M32 16 Q46 16 46 32 M46 32 L52 26 M46 32 L40 26 M46 32 Q46 48 32 48 M32 48 L32 56 M32 48 L32 40 M32 48 Q18 48 18 32 M18 32 L12 38 M18 32 L24 38" stroke="#fff" stroke-width="4" fill="none"/>')],
+["靠右侧行驶",blueC('<path d="M22 12 L22 30 L14 30 L34 52 L54 30 L46 30 L46 12 Z" fill="#fff" transform="rotate(-45 32 32)"/>')],
+["最低限速 50",'<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="29" fill="#1e50a2"/><text x="32" y="42" font-size="24" text-anchor="middle" font-weight="bold" fill="#fff">50</text></svg>'],
+["人行横道",'<svg viewBox="0 0 64 64"><rect x="4" y="4" width="56" height="56" rx="8" fill="#1e50a2"/><polygon points="32,12 54,52 10,52" fill="#fff"/>'+person(32,38,1)+'</svg>']
+]],
+["警告标志",[
+["注意行人",warn(person(32,36,1.1))],
+["注意儿童",warn(person(28,38,0.8)+person(38,38,0.65))],
+["注意危险",warn('<text x="32" y="48" font-size="30" text-anchor="middle" font-weight="bold" fill="#000">!</text>')],
+["施工",warn('<path d="M16 50 L30 34 L36 40 L42 34 L50 42 L44 50 Z" fill="#000"/><path d="M30 34 L26 26 L34 24 L36 30" fill="#000"/>')],
+["铁路道口",warn('<g fill="#000"><rect x="24" y="26" width="16" height="14" rx="2"/><rect x="27" y="20" width="10" height="8" rx="2"/><rect x="22" y="42" width="20" height="4"/><circle cx="26" cy="48" r="3"/><circle cx="38" cy="48" r="3"/></g>')],
+["慢行",warn('<text x="32" y="46" font-size="22" text-anchor="middle" font-weight="bold" fill="#000">慢</text>')]
+]]
+];
+var CATCOLOR={'禁令标志':['#e74c3c','#fdecea'],'指示标志':['#1e50a2','#e8eefb'],'警告标志':['#b8860b','#fff8e1']};
+function render(filter){
+    var out='';
+    DATA.forEach(function(cat){
+        var cards='';
+        cat[1].forEach(function(item){
+            if(filter&&item[0].toLowerCase().indexOf(filter)<0&&cat[0].indexOf(filter)<0) return;
+            var cc=CATCOLOR[cat[0]];
+            cards+='<div class="sign-card">'+item[1]+'<div class="n"></div><div class="c"><span style="color:'+cc[0]+';background:'+cc[1]+';padding:1px 8px;border-radius:8px;font-size:12px;">'+cat[0]+'</span></div></div>';
+            cards=cards.replace('<div class="n"></div>','<div class="n">'+item[0]+'</div>');
         });
+        if(cards) out+='<div class="sym-cat">'+cat[0]+'</div><div class="sign-grid">'+cards+'</div>';
     });
+    document.getElementById('content').innerHTML=out||'<div class="q-empty" style="text-align:center;color:#bbb;padding:20px;">未找到相关标志</div>';
 }
+document.getElementById('kw').addEventListener('input',function(){ render(this.value.trim()); });
+render('');
 </script>
-<script src="js/site-i18n.js" defer></script>
+<script src="/js/site-i18n.js" defer></script>
 </body>
 </html>

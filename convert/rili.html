@@ -564,7 +564,7 @@ document.getElementById('btn-export').addEventListener('click',function(){
         lines=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//luomor//gongju-rili//CN','CALSCALE:GREGORIAN','METHOD:PUBLISH'];
     eventsList.forEach(function(ev){
         lines.push('BEGIN:VEVENT');
-        lines.push('UID:rili-'+ev.id+'@zzzt.luomor.com');
+        lines.push('UID:rili-'+ev.id+'@toolboxy.luomor.com');
         lines.push('DTSTAMP:'+stamp);
         var d0=ev.date.replace(/-/g,'');
         if(ev.startTime){

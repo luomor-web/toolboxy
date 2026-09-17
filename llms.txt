@@ -1,0 +1,78 @@
+# toolboxy · 烙馍网在线工具
+
+> toolboxy（toolboxy.luomor.com）是烙馍网旗下的免费在线工具站，47 个工具全部免费、无需注册，绝大多数计算在浏览器本地完成，数据不上传服务器。
+
+## 开发工具
+
+- [时间戳转换](https://toolboxy.luomor.com/dev/timestamp.html)：Unix 时间戳与日期时间互相转换，实时显示当前时间戳，支持秒和毫秒。
+- [JSON 格式化](https://toolboxy.luomor.com/dev/json.html)：JSON 格式化美化、压缩、校验，语法错误即时定位提示。
+- [格式化代码](https://toolboxy.luomor.com/dev/codefmt.html)：JavaScript、HTML、CSS 代码一键格式化美化，缩进可选。
+- [Markdown 编辑器](https://toolboxy.luomor.com/dev/markdown.html)：左侧编辑右侧实时预览，渲染后的 HTML 一键复制。
+- [HTML 编辑器](https://toolboxy.luomor.com/dev/htmledit.html)：左侧编写 HTML/CSS/JS，右侧实时预览运行，可下载。
+- [加密解密](https://toolboxy.luomor.com/dev/aes.html)：AES-GCM 加密算法，设置密码在本地加密、解密文本。
+- [密码生成器](https://toolboxy.luomor.com/dev/password.html)：自定义长度和字符集，本地生成高强度随机密码，一键复制。
+
+## 计算工具
+
+- [在线计算器](https://toolboxy.luomor.com/calc/jisuan.html)：支持四则运算、括号、乘方、开方、三角函数等科学计算。
+- [房贷计算](https://toolboxy.luomor.com/calc/fangdai.html)：等额本息/等额本金两种方式的月供、总利息和总额对比。
+- [养老金计算](https://toolboxy.luomor.com/calc/yanglao.html)：按缴费基数和年限估算退休金，含构成明细和替代率。
+- [个税计算](https://toolboxy.luomor.com/calc/geshui.html)：工资累计预扣 + 年终奖单独计税，含全年每月明细。
+- [企业所得税](https://toolboxy.luomor.com/calc/qiyeshui.html)：小微企业 5%、高新 15%、一般 25%，税额与税后利润。
+- [增值税计算](https://toolboxy.luomor.com/calc/zengzhishui.html)：销项税额 − 进项税额 = 应纳税额，多档税率可选。
+- [商品税计算](https://toolboxy.luomor.com/calc/shangpin.html)：价税分离：含税销售金额拆分为商品金额和税额。
+- [BMI 计算器](https://toolboxy.luomor.com/calc/bmi.html)：输入身高体重，计算 BMI 身体质量指数并给出健康建议。
+
+## 查询工具
+
+- [邮编查询](https://toolboxy.luomor.com/query/youbian.html)：全国 2879 个区县邮政编码，名称拼音即查，一键复制。
+- [地区编码查询](https://toolboxy.luomor.com/query/diqu.html)：全国 2879 个区县的行政区划代码与邮编对照查询。
+- [机场三字码](https://toolboxy.luomor.com/query/jichang.html)：全球 7900+ 机场 IATA 三字代码，中英文城市/机场名即查。
+- [国家编码查询](https://toolboxy.luomor.com/query/guojia.html)：ISO 二字码/三字码/数字码、电话区号、域名后缀。
+- [身份证号解析](https://toolboxy.luomor.com/query/sfz.html)：校验合法性，解析归属地、出生日期、性别、生肖星座。
+- [手机号验证](https://toolboxy.luomor.com/query/shouji.html)：全球 250 国手机号码格式校验，显示国际格式。
+- [车牌查询](https://toolboxy.luomor.com/query/chepai.html)：全国 419 个车牌号段归属地查询。
+- [域名后缀查询](https://toolboxy.luomor.com/query/tld.html)：通用后缀含义说明，国别后缀对照所属国家。
+- [域名查询](https://toolboxy.luomor.com/query/whois.html)：域名注册商、注册/到期时间、状态和 NS 查询。
+- [域名解析查询](https://toolboxy.luomor.com/query/dns.html)：A/AAAA/CNAME/MX/NS/TXT 等 DNS 记录查询。
+- [本机IP查询](https://toolboxy.luomor.com/query/myip.html)：查看你的公网 IP 地址、归属地和运营商。
+- [IP 查询](https://toolboxy.luomor.com/query/ipcha.html)：任意 IP 的归属地、运营商、经纬度查询。
+- [网络链路查询](https://toolboxy.luomor.com/query/lianlu.html)：全球多节点 Ping 检测，对比各地区延迟。
+- [汉字字典](https://toolboxy.luomor.com/query/zidian.html)：查拼音、笔画数、笔顺和组词，成语附拼音和释义。
+
+## 换算/转换工具
+
+- [币种转换](https://toolboxy.luomor.com/convert/huobi.html)：人民币与美元、欧元、日元等 13 种货币实时汇率换算。
+- [世界时钟](https://toolboxy.luomor.com/convert/shizhong.html)：全球主要城市当前时间实时显示，可自由添加删除城市。
+- [万年历](https://toolboxy.luomor.com/convert/rili.html)：公历农历对照、黄历宜忌、节假日，事件备忘支持重复提醒和通知。
+- [重量转换](https://toolboxy.luomor.com/convert/zhongliang.html)：公斤、克、斤、两互相换算。
+- [温度转换](https://toolboxy.luomor.com/convert/wendu.html)：摄氏度、华氏度、开氏度互相换算。
+- [风速转换](https://toolboxy.luomor.com/convert/fengsu.html)：m/s、km/h 与蒲福风级（几级风）换算。
+- [大写数字](https://toolboxy.luomor.com/convert/daxie.html)：零壹贰叁对照表，金额一键转人民币大写。
+- [简繁转换](https://toolboxy.luomor.com/convert/jianfan.html)：简体中文与繁体中文互相转换，支持台湾、香港用词习惯。
+- [汉字转拼音](https://toolboxy.luomor.com/convert/pinyin.html)：汉字批量转拼音，支持带声调、不带声调和首字母三种格式。
+
+## 图片工具
+
+- [图片压缩](https://toolboxy.luomor.com/image/imgzip.html)：浏览器本地压缩图片，质量和尺寸可调，文件不上传服务器。
+- [图片格式转换](https://toolboxy.luomor.com/image/imgconv.html)：PNG、JPEG、WebP 图片格式互转，保持原始尺寸。
+
+## 其它工具
+
+- [数学符号](https://toolboxy.luomor.com/other/shuxue.html)：运算/几何/集合/希腊字母大全，含读音含义，点击复制。
+- [特殊符号](https://toolboxy.luomor.com/other/teshu.html)：箭头/货币/星座/音乐等符号大全，点击复制。
+- [交通标志](https://toolboxy.luomor.com/other/biaozhi.html)：禁令/指示/警告标志图片名称对照，学车必备。
+- [emoji 符号查询](https://toolboxy.luomor.com/other/emoji.html)：十大类 789 个 emoji，含名称含义，点击复制。
+- [字数统计](https://toolboxy.luomor.com/other/zishu.html)：字符/汉字/单词/行段落实时统计。
+- [色盲测试](https://toolboxy.luomor.com/other/semang.html)：仿石原检测图，色觉自测（仅供参考）。
+- [在线翻译](https://toolboxy.luomor.com/other/fanyi.html)：中文与英、日、韩等 9 种语言互译，长文本自动分段。
+
+## 特点
+
+- 全部免费，无需登录
+- 本地优先：密码、加密、图片处理等在浏览器本地完成，不上传
+- 支持简体/繁体/英文界面
+
+## 主站
+
+- [烙馍网](https://www.luomor.com/)：田字格字帖生成器（汉字笔顺练习打印）

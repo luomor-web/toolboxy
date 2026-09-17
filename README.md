@@ -89,13 +89,13 @@
 ## 目录结构
 
 ```
-├── index.html       # 工具导航首页（按 6 个分类分组展示卡片）
-├── dev/             # 开发工具（8）
-├── calc/            # 计算工具（8）
-├── query/           # 查询工具（14）
-├── convert/         # 换算工具（9）
-├── image/           # 图片工具（2）
-├── other/           # 其它工具（7）
+├── index.html       # 工具总览首页（按 6 个分类分组展示卡片）
+├── dev/             # 开发工具（8），含 index.html 分类首页
+├── calc/            # 计算工具（8），含 index.html 分类首页
+├── query/           # 查询工具（14），含 index.html 分类首页
+├── convert/         # 换算工具（9），含 index.html 分类首页
+├── image/           # 图片工具（2），含 index.html 分类首页
+├── other/           # 其它工具（7），含 index.html 分类首页
 ├── pinyin.php / zidian.php / dns.php / proxy.php  # PHP 端点（根目录）
 ├── lib.php          # 共享 PHP 函数（笔顺/田字格渲染，仅 zidian.php 用）
 ├── form.css         # 表单页公共样式

@@ -3,26 +3,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>简繁转换 - 在线简体中文繁体中文互转 - 工具专区 - 烙馍网</title>
-<meta name="keywords" content="简繁转换，简体转繁体，繁体转简体，繁体字转换，在线简繁转换，烙馍网">
-<meta name="description" content="免费在线简繁转换工具：简体中文与繁体中文互相转换，支持台湾正体、香港繁体用词习惯，一键复制结果。">
+<title>换算工具 - 工具专区 - 烙馍网</title>
+<meta name="keywords" content="币种转换，世界时钟，万年历，重量转换，温度转换，风速转换，大写数字，简繁转换，汉字转拼音，换算工具，烙馍网">
+<meta name="description" content="烙馍网工具专区换算工具：币种转换、世界时钟、万年历、重量转换、温度转换、风速转换、大写数字、简繁转换、汉字转拼音，免费使用。">
 <meta name="author" content="烙馍网">
-<link rel="canonical" href="https://toolboxy.luomor.com/convert/jianfan.html">
+<link rel="canonical" href="https://toolboxy.luomor.com/convert/">
 <meta name="robots" content="index, follow">
-<link rel="stylesheet" href="/form.css">
 <style>
-.tool-input{ width:100%; padding:10px 14px; border:2px solid var(--border-color); border-radius:8px; font-size:15px; font-family:inherit; background:#fff; }
-.tool-input:focus{ outline:none; border-color:#667eea; }
-.field-row{ display:flex; gap:14px; flex-wrap:wrap; margin-top:22px; }
-.field-row .field{ flex:1; min-width:180px; }
-.field-row label{ font-size:14px; font-weight:600; color:#666; display:block; margin-bottom:6px; }
-.check-group{ display:flex; flex-wrap:wrap; gap:8px; }
-.btn-sub{ background:#fff; color:#667eea; border:2px solid #667eea; padding:12px 26px; font-size:15px; margin:6px 4px 0; }
-.result-box{ margin-top:18px; padding:14px 16px; background:#f8f9fa; border-radius:8px; font-size:15px; word-break:break-all; display:none; }
-.result-box.show{ display:block; }
-.result-box.error{ background:#fdecea; color:#c0392b; }
-.result-box pre{ white-space:pre-wrap; word-break:break-all; font-family:Menlo,Consolas,"Courier New",monospace; font-size:14px; }
+:root{ --text-color:#2c3e50; --border-color:#e9ecef; --shadow:0 2px 12px rgba(0,0,0,0.08); --shadow-hover:0 4px 20px rgba(0,0,0,0.12); --radius:12px; }
+*{ margin:0; padding:0; box-sizing:border-box; }
+body{ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans SC",sans-serif; background:linear-gradient(135deg,#f5f7fa 0%,#e4e8ec 100%); min-height:100vh; color:var(--text-color); line-height:1.6; }
+.container{ max-width:980px; margin:0 auto; padding:20px; padding-top:70px; }
+.header{ position:relative; text-align:center; padding:36px 20px; background:linear-gradient(135deg,#667eea 0%,#764ba2 100%); border-radius:var(--radius); margin-bottom:30px; box-shadow:var(--shadow); }
+.header h1{ font-size:28px; font-weight:700; color:#fff; text-shadow:0 2px 4px rgba(0,0,0,0.2); }
+.header .subtitle{ font-size:14px; color:rgba(255,255,255,0.9); margin-top:8px; }
+.back-links{ position:absolute; top:12px; left:16px; display:flex; flex-direction:column; gap:4px; text-align:left; }
+.back-links .back-link{ position:static; }
+.back-link{ position:absolute; top:12px; left:16px; color:rgba(255,255,255,0.85); text-decoration:none; font-size:14px; }
+.back-link:hover{ color:#fff; text-decoration:underline; }
+.nav-bar{ position:fixed; top:0; left:0; right:0; z-index:1000; display:flex; flex-wrap:wrap; gap:10px; justify-content:center; align-items:center; padding:10px 16px; background:linear-gradient(135deg,#667eea 0%,#764ba2 100%); box-shadow:0 2px 8px rgba(0,0,0,0.08); }
+.nav-bar a{ padding:8px 20px; border-radius:20px; background:rgba(255,255,255,0.15); color:#fff; text-decoration:none; font-size:15px; font-weight:600; transition:all .2s; }
+.nav-bar > a:hover, .nav-dropdown > a:hover{ background:rgba(255,255,255,0.3); transform:translateY(-2px); }
+.nav-bar a.active{ background:#fff; color:#764ba2; box-shadow:0 0 0 2px #ffd166, 0 2px 8px rgba(0,0,0,0.25); }
+.nav-sub a{ background:#fff; color:var(--text-color); box-shadow:0 2px 8px rgba(0,0,0,0.15); }
+.nav-dropdown{ position:relative; display:flex; align-items:center; }
+.nav-sub{ display:none; position:absolute; top:100%; left:50%; transform:translateX(-50%); padding-top:8px; z-index:100; min-width:130px; }
+.nav-dropdown:hover .nav-sub, .nav-dropdown:focus-within .nav-sub{ display:flex; flex-direction:column; gap:6px; }
+.nav-sub.nav-grid{ min-width:0; }
+@media (min-width:769px){
+.nav-dropdown:hover .nav-sub.nav-grid, .nav-dropdown:focus-within .nav-sub.nav-grid{ display:grid; grid-template-columns:repeat(8,auto); gap:6px; }
+}
+@media (min-width:769px) and (max-width:1200px){
+.nav-dropdown:hover .nav-sub.nav-grid, .nav-dropdown:focus-within .nav-sub.nav-grid{ grid-template-columns:repeat(5,auto); }
+}
+.nav-sub a{ white-space:nowrap; text-align:center; }
+.cards{ columns:280px; column-gap:20px; }
+.cat-title{ font-size:20px; margin:28px 0 14px; padding-left:4px; color:var(--text-color); scroll-margin-top:70px; }
+.card-link{ display:block; break-inside:avoid; margin-bottom:20px; text-decoration:none; color:inherit; }
+.card{ background:#fff; border-radius:var(--radius); box-shadow:var(--shadow); padding:28px; transition:all .3s ease; }
+.card-link:hover .card{ box-shadow:var(--shadow-hover); transform:translateY(-4px); }
+.card .icon{ font-size:40px; margin-bottom:12px; }
+.card h2{ font-size:20px; margin-bottom:8px; }
+.card p{ font-size:14px; color:#666; }
+.footer{ text-align:center; padding:24px 0; font-size:13px; color:#999; }
+.footer a{ color:#999; }
+.tutorial{ background:#fff; border-radius:var(--radius); box-shadow:var(--shadow); padding:28px; margin-top:20px; }
+.tutorial h3{ font-size:18px; margin-bottom:12px; color:var(--text-color); }
+.tutorial ol{ padding-left:22px; color:#555; font-size:14px; line-height:2; }
+.tutorial .tip{ margin-top:12px; padding:12px 16px; background:#fff8e6; border-radius:8px; font-size:14px; color:#8a6d3b; }
+@media (max-width:768px){ .header h1{ font-size:20px; } .container{ padding-top:20px; } }
 </style>
+
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6096731848877113" crossorigin="anonymous"></script>
     <script async src="https://fundingchoicesmessages.google.com/i/pub-6096731848877113?ers=1"></script><script>(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
     <script>(function(){'use strict';function aa(a){var b=0;return function(){return b<a.length?{done:!1,value:a[b++]}:{done:!0}}}var ba=typeof Object.defineProperties=="function"?Object.defineProperty:function(a,b,c){if(a==Array.prototype||a==Object.prototype)return a;a[b]=c.value;return a};
@@ -79,21 +110,22 @@ var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
   hm.src = "https://hm.baidu.com/hm.js?12a0d13963b589e9095ccecdd327f3fa";
-  var s = document.getElementsByTagName("script")[0]; 
+  var s = document.getElementsByTagName("script")[0];
   s.parentNode.insertBefore(hm, s);
 })();
 </script>
+
 </head>
 <body>
 <div class="container">
-<header class="header">
-    <div class="back-links">
-        <a class="back-link" href="/index.html">← 工具专区</a>
-        <a class="back-link" href="/index.html">← 首页</a>
-    </div>
-    <h1>🇨🇳 简繁转换</h1>
-    <p class="subtitle">简体 ↔ 繁体 · 支持台湾/香港正体</p>
-</header>
+    <header class="header">
+        <div class="back-links">
+            <a class="back-link" href="/index.html">← 工具首页</a>
+            <a class="back-link" href="https://www.luomor.com/">← 烙馍网</a>
+        </div>
+        <h1>🔄 换算工具</h1>
+        <p class="subtitle">9 个免费在线换算工具</p>
+    </header>
 
 <nav class="nav-bar" aria-label="主导航">
         <a href="https://www.luomor.com/">烙馍网首页</a>
@@ -178,87 +210,42 @@ var _hmt = _hmt || [];
         </div>
     </nav>
 
-<div class="card">
-<p class="seo-intro">在线简繁转换工具：支持简体中文转台湾正体、简体中文转香港繁体、繁体转简体三种模式，转换结果可一键复制。</p>
-<div class="options-grid" style="margin-top:0;">
-    <div class="option-group">
-        <div class="option-group-title">转换方向</div>
-        <div class="radio-group">
-            <label class="radio-label"><input type="radio" name="dir" value="cn2twp" checked><span>简体 → 繁体（台湾）</span></label>
-            <label class="radio-label"><input type="radio" name="dir" value="cn2hk"><span>简体 → 繁体（香港）</span></label>
-            <label class="radio-label"><input type="radio" name="dir" value="t2cn"><span>繁体 → 简体</span></label>
-        </div>
+    <div class="cards">
+
+        <a class="card-link" href="/convert/huobi.html">
+            <div class="card"><div class="icon">💱</div><h2>币种转换</h2><p>人民币与美元、欧元、日元等 13 种货币实时汇率换算。</p></div>
+        </a>
+        <a class="card-link" href="/convert/shizhong.html">
+            <div class="card"><div class="icon">🌍</div><h2>世界时钟</h2><p>全球主要城市当前时间实时显示，可自由添加删除城市。</p></div>
+        </a>
+        <a class="card-link" href="/convert/rili.html">
+            <div class="card"><div class="icon">📅</div><h2>万年历</h2><p>公历农历对照、黄历宜忌、节假日，事件备忘支持重复提醒和通知。</p></div>
+        </a>
+        <a class="card-link" href="/convert/zhongliang.html">
+            <div class="card"><div class="icon">⚖️</div><h2>重量转换</h2><p>公斤、克、斤、两互相换算。</p></div>
+        </a>
+        <a class="card-link" href="/convert/wendu.html">
+            <div class="card"><div class="icon">🌡️</div><h2>温度转换</h2><p>摄氏度、华氏度、开氏度互相换算。</p></div>
+        </a>
+        <a class="card-link" href="/convert/fengsu.html">
+            <div class="card"><div class="icon">💨</div><h2>风速转换</h2><p>m/s、km/h 与蒲福风级（几级风）换算。</p></div>
+        </a>
+        <a class="card-link" href="/convert/daxie.html">
+            <div class="card"><div class="icon">🔢</div><h2>大写数字</h2><p>零壹贰叁对照表，金额一键转人民币大写。</p></div>
+        </a>
+        <a class="card-link" href="/convert/jianfan.html">
+            <div class="card"><div class="icon">🇨🇳</div><h2>简繁转换</h2><p>简体中文与繁体中文互相转换，支持台湾、香港用词习惯。</p></div>
+        </a>
+        <a class="card-link" href="/convert/pinyin.html">
+            <div class="card"><div class="icon">🗣️</div><h2>汉字转拼音</h2><p>汉字批量转拼音，支持带声调、不带声调和首字母三种格式。</p></div>
+        </a>
     </div>
-</div>
 
-<div style="margin-top:18px;">
-    <label class="form-label" for="input">输入文本</label>
-    <textarea id="input" placeholder="输入要转换的中文文本"></textarea>
-</div>
-
-<div class="btn-row">
-    <button type="button" class="submit-btn" id="btn-go">立即转换</button>
-    <button type="button" class="submit-btn btn-sub" id="btn-copy">复制结果</button>
-    <button type="button" class="submit-btn btn-sub" id="btn-clear">清空</button>
-</div>
-
-<div class="result-box" id="result"><pre id="output"></pre></div>
-    <div class="tutorial">
-        <h3>使用教程</h3>
-        <ol>
-            <li>选择转换方向：简体转台湾正体、简体转香港繁体，或繁体转简体</li>
-            <li>粘贴要转换的中文文本，点击 <strong>立即转换</strong></li>
-            <li>点击 <strong>复制结果</strong> 使用转换后的文本</li>
-        </ol>
-        <div class="tip"><strong>💡 提示：</strong>转换使用 OpenCC 开放中文转换词库（CDN 加载），能正确处理「头发→頭髮」这类词汇级转换；首次加载组件需要联网。</div>
+    <div class="footer">
+        <p>Copyright © <a href="https://www.luomor.com" target="_blank" rel="noopener">烙馍网</a></p>
     </div>
-</div>
 </div>
 <script src="/js/nav.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/opencc-js@1.4.2/dist/umd/full.min.js"></script>
-<script>
-var input=document.getElementById('input'),
-    result=document.getElementById('result'),
-    output=document.getElementById('output'),
-    converters={};
-function show(text,err){
-    result.className='result-box show'+(err?' error':'');
-    output.textContent=text;
-}
-function getConv(key){
-    if(converters[key]) return converters[key];
-    var map={ cn2twp:['cn','twp'], cn2hk:['cn','hk'], t2cn:['tw','cn'] };
-    var o=map[key], conv;
-    try{ conv=OpenCC.Converter({from:o[0],to:o[1]}); }
-    catch(e){
-        if(o[1]==='twp'){ conv=OpenCC.Converter({from:o[0],to:'tw'}); }
-        else{ throw e; }
-    }
-    converters[key]=conv; return conv;
-}
-document.getElementById('btn-go').addEventListener('click',function(){
-    var t=input.value;
-    if(!t.trim()){ show('请输入要转换的文本',true); return; }
-    if(typeof OpenCC==='undefined'){ show('转换组件加载失败，请检查网络后刷新重试',true); return; }
-    try{
-        var key=document.querySelector('input[name="dir"]:checked').value;
-        show(getConv(key)(t));
-    }catch(e){
-        show('转换失败：'+e.message,true);
-    }
-});
-document.getElementById('btn-copy').addEventListener('click',function(){
-    var t=output.textContent, b=this;
-    if(!t){ show('没有可复制的结果',true); return; }
-    navigator.clipboard.writeText(t).then(function(){
-        b.textContent='已复制';
-        setTimeout(function(){ b.textContent='复制结果'; },1200);
-    });
-});
-document.getElementById('btn-clear').addEventListener('click',function(){
-    input.value=''; output.textContent=''; result.className='result-box';
-});
-</script>
 <script src="/js/site-i18n.js" defer></script>
 </body>
 </html>

@@ -39,13 +39,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 新增一个工具的清单
 
-工具页按 6 个分类放在子目录：`dev/` 开发、`calc/` 计算、`query/` 查询、`convert/` 换算、`image/` 图片、`other/` 其它。页面结构高度模板化，复制同分类现有工具页（如 `dev/json.html`）最快。需要同步修改的位置：
+工具页按 6 个分类放在子目录：`dev/` 开发、`calc/` 计算、`query/` 查询、`convert/` 换算、`image/` 图片、`other/` 其它，**每个分类目录有自己的 `index.html` 分类首页**（卡片列表，canonical 为 `/dev/` 目录形式）。导航一级分类是可点击链接（指向分类首页），其下悬挂该分类的工具菜单；`烙馍网首页` 旁有 `工具首页`（→ `/index.html`，全工具总览）。页面结构高度模板化，复制同分类现有工具页（如 `dev/json.html`）最快。需要同步修改的位置：
 
 1. 新建 `<分类>/<name>.html`（含 canonical `https://toolboxy.luomor.com/<分类>/<name>.html`、keywords/description meta、AdSense 脚本块原样保留；资源引用全部用绝对路径 `/form.css`、`/js/...`）
-2. `index.html` 对应分类的 `.cards` 里加工具卡片
-3. **每个页面的 `.nav-bar` 对应分类下拉都要加链接**（导航 HTML 在全部 48 页 + pinyin.php/zidian.php 中逐页重复，需批量同步；可用 sed 批量插入）
+2. `index.html`（总览）和 `<分类>/index.html`（分类首页）的 `.cards` 里都加工具卡片
+3. **每个页面的 `.nav-bar` 对应分类下拉都要加链接**（导航 HTML 在全部 48 工具页 + 6 分类首页 + 根 index.html + pinyin.php/zidian.php 中逐页重复，需批量同步；可用 sed 批量插入）
 4. `sitemap.xml` 加条目
-5. 新文案补进 `lang/site-en.json` 和 `lang/site-zh-TW.json`
+5. 新文案补进 `lang/site-en.json` 和 `lang/site-zh-TW.json`（分类首页的 title/subtitle/description 整串也是字典条目）
 
 ## 编辑注意事项
 

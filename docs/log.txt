@@ -1,0 +1,7 @@
+
+2026-09-17 GEO 优化（面向 AI 答案引擎）
+
+  - llms.txt 重写：按 6 大分类列出全部 48 个工具（从各分类首页卡片提取，修复了空列表问题）
+  - robots.txt：显式欢迎 GPTBot/ClaudeBot/PerplexityBot/Google-Extended/Bytespider/CCBot + llms.txt 注释
+  - 47 个工具页注入 HowTo JSON-LD（从各页「使用教程」步骤自动生成）
+  - 首页新增可见 FAQ（4 条：免费/数据隐私/语言/万年历存储）+ FAQPage JSON-LD，文案已入 lang/site-*.json

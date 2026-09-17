@@ -1,3 +1,24 @@
+# 搜索引擎
 User-agent: *
 Allow: /
+
+# AI 爬虫（GEO：欢迎 AI 答案引擎收录）
+User-agent: GPTBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: Bytespider
+Allow: /
+User-agent: CCBot
+Allow: /
+
+# llms.txt（AI 摘要入口）
+# https://toolboxy.luomor.com/llms.txt
+
 Sitemap: https://toolboxy.luomor.com/sitemap.xml

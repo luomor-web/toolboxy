@@ -121,6 +121,9 @@ var _hmt = _hmt || [];
   s.parentNode.insertBefore(hm, s);
 })();
 </script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "HowTo", "name": "汉字转拼音", "step": [{"@type": "HowToStep", "text": "在输入框中粘贴或输入汉字（最多 500 字）"}, {"@type": "HowToStep", "text": "选择拼音格式：带声调、不带声调或首字母"}, {"@type": "HowToStep", "text": "点击 立即转换 查看结果，可一键复制"}]}
+</script>
 </head>
 <body>
 <div class="container">

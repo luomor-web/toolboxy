@@ -5,3 +5,9 @@
   - robots.txt：显式欢迎 GPTBot/ClaudeBot/PerplexityBot/Google-Extended/Bytespider/CCBot + llms.txt 注释
   - 47 个工具页注入 HowTo JSON-LD（从各页「使用教程」步骤自动生成）
   - 首页新增可见 FAQ（4 条：免费/数据隐私/语言/万年历存储）+ FAQPage JSON-LD，文案已入 lang/site-*.json
+
+2026-09-17 toolboxy 完全独立化
+
+  - Pinyin.php 字典复制到 lib/Pinyin.php（根目录曾误放成 pinyin.php 工具页内容，已删除）
+  - lib.php 加载逻辑简化为仅 lib/Pinyin.php（去掉 scandir 回退父目录）；pinyin.php include 同步改 lib/
+  - 验证：pinyin/zidian POST 均正常；PHP 文件已无父目录依赖

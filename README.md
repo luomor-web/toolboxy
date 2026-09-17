@@ -119,4 +119,4 @@ php -S localhost:8000
 ## 相关项目
 
 - 主站：[烙馍网](https://www.luomor.com/)
-- 字帖生成器：[烙馍网字帖](https://zzzt.luomor.com/)（本目录嵌套于其仓库中，共享 `Pinyin.php` 拼音字典与笔顺数据）
+- 字帖生成器：[烙馍网字帖](https://zzzt.luomor.com/)

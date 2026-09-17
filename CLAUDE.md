@@ -4,9 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 项目概述
 
-烙馍网在线工具（toolboxy.luomor.com）—— 约 48 个独立在线工具（时间戳、JSON 格式化、Base64、加密解密、计算器、汇率、万年历、各类查询等）组成的纯静态 + 少量 PHP 的站点。本目录嵌在主站字帖项目（luomor-zt，有独立 CLAUDE.md）内部，共享其 `../Pinyin.php` 与 `bishun_data/` 笔顺数据。
+烙馍网在线工具（toolboxy.luomor.com）—— 约 48 个独立在线工具（时间戳、JSON 格式化、Base64、加密解密、计算器、汇率、万年历、各类查询等）组成的纯静态 + 少量 PHP 的站点。本目录嵌在主站字帖项目（luomor-zt，有独立 CLAUDE.md）内部，已完全独立：`Pinyin.php` 字典与 `bishun_data/` 笔顺数据均已复制进本项目。
 
-**无构建系统、无测试、无 lint**——纯 HTML/CSS/JS/PHP，部署即用。本地开发可用 `php -S localhost:8000` 在本目录起服务（注意 pinyin 工具依赖父目录的 `../Pinyin.php`，从 toolboxy 目录起服务时该相对路径恰好成立）。
+**无构建系统、无测试、无 lint**——纯 HTML/CSS/JS/PHP，部署即用。本地开发可用 `php -S localhost:8000` 在本目录起服务（Pinyin 字典在 `lib/Pinyin.php`，不再依赖父目录）。
 
 ## 架构：三种工具页模式
 
@@ -28,7 +28,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **`form.css`** — 所有表单页公共样式（`.container`/`.header`/`.nav-bar`/`.card`/`.submit-btn` 等）。新页面直接 `<link rel="stylesheet" href="form.css">`。
 - **`js/nav.js`** — 每页底部 `defer` 加载：自动判断导航 active 状态、移动端抽屉菜单、**自动向 `.nav-bar` 注入语言切换器**。勿在页面里手写语言切换按钮。
 - **`js/site-i18n.js`** — 多语言引擎（见下文）。
-- **`lib.php`** — 从主站复制的 `xx_*` 函数库（笔顺加载、田字格渲染等），目前仅 `zidian.php` 使用。顶部 Pinyin 类加载逻辑：用 `scandir` 大小写敏感地判断同目录是否存在真正的 `Pinyin.php`（部署时从主站复制），否则回退 `../Pinyin.php`——**不能用 `file_exists`/`include 'Pinyin.php'` 直接判断**，大小写不敏感文件系统会误命中 `pinyin.php` 工具页导致整页 HTML 混入输出。
+- **`lib.php`** — 从主站复制的 `xx_*` 函数库（笔顺加载、田字格渲染等），目前仅 `zidian.php` 使用。顶部 Pinyin 类加载：`include_once dirname(__FILE__).'/lib/Pinyin.php'`（字典复制自主站，**不要放回根目录**——根目录的 `Pinyin.php` 在大小写不敏感文件系统上会与 `pinyin.php` 工具页撞名）。
 - **`data/*.json`** — 手工整理的权威数据：`airport.json`（机场三字码）、`country.json`（国家编码）、`zipcode.json`（邮编/区号）、`chepai.json`（车牌归属地）、`holiday.json`（法定节假日调休）、`chengyu.json`/`zuci.json`（字典页用）。
 
 ## 多语言 (i18n)

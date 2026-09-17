@@ -1,6 +1,6 @@
 <?php
-/* 汉字转拼音 - 服务端转换（复用 ../Pinyin.php 字典） */
-include_once dirname(__FILE__).'/../Pinyin.php';
+/* 汉字转拼音 - 服务端转换（字典在 lib/Pinyin.php，复制自主站） */
+include_once dirname(__FILE__).'/lib/Pinyin.php';
 
 $text = trim((string)($_POST['text'] ?? $_GET['text'] ?? ''));
 $fmt  = (string)($_POST['fmt'] ?? $_GET['fmt'] ?? 'tone');

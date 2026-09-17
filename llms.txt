@@ -2,6 +2,8 @@
 
 > toolboxy（toolboxy.luomor.com）是烙馍网旗下的免费在线工具站，47 个工具全部免费、无需注册，绝大多数计算在浏览器本地完成，数据不上传服务器。
 
+详细版（含每个页面的完整说明与使用方法）：[llms-full.txt](https://toolboxy.luomor.com/llms-full.txt)
+
 ## 开发工具
 
 - [时间戳转换](https://toolboxy.luomor.com/dev/timestamp.html)：Unix 时间戳与日期时间互相转换，实时显示当前时间戳，支持秒和毫秒。

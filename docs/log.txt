@@ -11,3 +11,7 @@
   - Pinyin.php 字典复制到 lib/Pinyin.php（根目录曾误放成 pinyin.php 工具页内容，已删除）
   - lib.php 加载逻辑简化为仅 lib/Pinyin.php（去掉 scandir 回退父目录）；pinyin.php include 同步改 lib/
   - 验证：pinyin/zidian POST 均正常；PHP 文件已无父目录依赖
+
+2026-09-17 新增 llms-full.txt
+
+  - 48 个工具的完整说明与使用方法（由各页 seo-intro/tutorial/tip 自动生成）；llms.txt 已加互链

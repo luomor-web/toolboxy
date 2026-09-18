@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>404 - 页面不存在 - 烙馍网在线工具</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="author" content="烙馍网">
+<style>
+:root{ --text-color:#2c3e50; --border-color:#e9ecef; --shadow:0 2px 12px rgba(0,0,0,0.08); --radius:12px; }
+*{ margin:0; padding:0; box-sizing:border-box; }
+body{ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans SC",sans-serif; background:linear-gradient(135deg,#f5f7fa 0%,#e4e8ec 100%); min-height:100vh; color:var(--text-color); line-height:1.6; }
+.container{ max-width:980px; margin:0 auto; padding:20px; padding-top:70px; }
+.header{ position:relative; text-align:center; padding:36px 20px; background:linear-gradient(135deg,#667eea 0%,#764ba2 100%); border-radius:var(--radius); margin-bottom:30px; box-shadow:var(--shadow); }
+.header h1{ font-size:28px; font-weight:700; color:#fff; text-shadow:0 2px 4px rgba(0,0,0,0.2); }
+.header .subtitle{ font-size:14px; color:rgba(255,255,255,0.9); margin-top:8px; }
+.nav-bar{ position:fixed; top:0; left:0; right:0; z-index:1000; display:flex; flex-wrap:wrap; gap:10px; justify-content:center; align-items:center; padding:10px 16px; background:linear-gradient(135deg,#667eea 0%,#764ba2 100%); box-shadow:0 2px 8px rgba(0,0,0,0.08); }
+.nav-bar a{ padding:8px 20px; border-radius:20px; background:rgba(255,255,255,0.15); color:#fff; text-decoration:none; font-size:15px; font-weight:600; transition:all .2s; }
+.nav-bar > a:hover, .nav-dropdown > a:hover{ background:rgba(255,255,255,0.3); transform:translateY(-2px); }
+.nav-bar a.active{ background:#fff; color:#764ba2; box-shadow:0 0 0 2px #ffd166, 0 2px 8px rgba(0,0,0,0.25); }
+.nav-sub a{ background:#fff; color:var(--text-color); box-shadow:0 2px 8px rgba(0,0,0,0.15); }
+.nav-dropdown{ position:relative; display:flex; align-items:center; }
+.nav-sub{ display:none; position:absolute; top:100%; left:50%; transform:translateX(-50%); padding-top:8px; z-index:100; min-width:130px; }
+.nav-dropdown:hover .nav-sub, .nav-dropdown:focus-within .nav-sub{ display:flex; flex-direction:column; gap:6px; }
+.nav-sub a{ white-space:nowrap; text-align:center; }
+.card{ background:#fff; border-radius:var(--radius); box-shadow:var(--shadow); padding:40px 30px; text-align:center; }
+.err-code{ font-size:72px; font-weight:800; background:linear-gradient(135deg,#667eea 0%,#764ba2 100%); -webkit-background-clip:text; background-clip:text; color:transparent; line-height:1.2; }
+.err-msg{ font-size:20px; font-weight:600; margin-top:8px; }
+.err-desc{ font-size:14px; color:#888; margin-top:8px; }
+.btn-home{ display:inline-block; margin-top:24px; padding:12px 40px; font-size:16px; font-weight:600; color:#fff; background:linear-gradient(135deg,#667eea 0%,#764ba2 100%); border-radius:30px; text-decoration:none; box-shadow:var(--shadow); transition:transform .2s; }
+.btn-home:hover{ transform:translateY(-2px); }
+.cat-links{ margin-top:28px; padding-top:20px; border-top:1px solid var(--border-color); }
+.cat-links h2{ font-size:15px; color:#666; margin-bottom:12px; }
+.cat-links ul{ list-style:none; display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
+.cat-links a{ display:inline-block; padding:8px 18px; border:2px solid var(--border-color); border-radius:20px; font-size:14px; color:var(--text-color); text-decoration:none; transition:all .2s; }
+.cat-links a:hover{ border-color:#667eea; color:#667eea; }
+.footer{ text-align:center; padding:24px 0; font-size:13px; color:#999; }
+.footer a{ color:#999; }
+@media (max-width:768px){ .err-code{ font-size:52px; } .container{ padding-top:20px; } }
+</style>
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <h1>🧰 烙馍网在线工具</h1>
+        <p class="subtitle">开发 · 生活 · 查询 · 图片处理，48 个免费在线工具</p>
+    </header>
+
+    <nav class="nav-bar" aria-label="主导航">
+        <a href="https://www.luomor.com/">烙馍网首页</a>
+        <a href="/index.html">工具首页</a>
+        <div class="nav-dropdown">
+            <a href="/dev/index.html">开发工具</a>
+            <div class="nav-sub">
+                <a href="/dev/timestamp.html">时间戳转换</a>
+                <a href="/dev/json.html">JSON 格式化</a>
+                <a href="/dev/codefmt.html">格式化代码</a>
+                <a href="/dev/markdown.html">Markdown 编辑器</a>
+                <a href="/dev/htmledit.html">HTML 编辑器</a>
+                <a href="/dev/base64.html">Base64 编解码</a>
+                <a href="/dev/aes.html">加密解密</a>
+                <a href="/dev/password.html">密码生成器</a>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <a href="/calc/index.html">计算工具</a>
+            <div class="nav-sub">
+                <a href="/calc/jisuan.html">在线计算器</a>
+                <a href="/calc/fangdai.html">房贷计算</a>
+                <a href="/calc/yanglao.html">养老金计算</a>
+                <a href="/calc/geshui.html">个税计算</a>
+                <a href="/calc/qiyeshui.html">企业所得税</a>
+                <a href="/calc/zengzhishui.html">增值税计算</a>
+                <a href="/calc/shangpin.html">商品税计算</a>
+                <a href="/calc/bmi.html">BMI 计算器</a>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <a href="/query/index.html">查询工具</a>
+            <div class="nav-sub">
+                <a href="/query/youbian.html">邮编查询</a>
+                <a href="/query/diqu.html">地区编码查询</a>
+                <a href="/query/jichang.html">机场三字码</a>
+                <a href="/query/guojia.html">国家编码查询</a>
+                <a href="/query/sfz.html">身份证号解析</a>
+                <a href="/query/shouji.html">手机号验证</a>
+                <a href="/query/chepai.html">车牌查询</a>
+                <a href="/query/tld.html">域名后缀查询</a>
+                <a href="/query/whois.html">域名查询</a>
+                <a href="/query/dns.html">域名解析查询</a>
+                <a href="/query/myip.html">本机IP查询</a>
+                <a href="/query/ipcha.html">IP 查询</a>
+                <a href="/query/lianlu.html">网络链路查询</a>
+                <a href="/query/zidian.html">汉字字典</a>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <a href="/convert/index.html">换算工具</a>
+            <div class="nav-sub">
+                <a href="/convert/huobi.html">币种转换</a>
+                <a href="/convert/shizhong.html">世界时钟</a>
+                <a href="/convert/rili.html">万年历</a>
+                <a href="/convert/zhongliang.html">重量转换</a>
+                <a href="/convert/wendu.html">温度转换</a>
+                <a href="/convert/fengsu.html">风速转换</a>
+                <a href="/convert/daxie.html">大写数字</a>
+                <a href="/convert/jianfan.html">简繁转换</a>
+                <a href="/convert/pinyin.html">汉字转拼音</a>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <a href="/image/index.html">图片工具</a>
+            <div class="nav-sub">
+                <a href="/image/imgzip.html">图片压缩</a>
+                <a href="/image/imgconv.html">图片格式转换</a>
+            </div>
+        </div>
+        <div class="nav-dropdown">
+            <a href="/other/index.html">其它工具</a>
+            <div class="nav-sub">
+                <a href="/other/shuxue.html">数学符号</a>
+                <a href="/other/teshu.html">特殊符号</a>
+                <a href="/other/biaozhi.html">交通标志</a>
+                <a href="/other/emoji.html">emoji 符号</a>
+                <a href="/other/zishu.html">字数统计</a>
+                <a href="/other/semang.html">色盲测试</a>
+                <a href="/other/fanyi.html">在线翻译</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="card">
+        <div class="err-code">404</div>
+        <p class="err-msg">页面不存在或已被移动</p>
+        <p class="err-desc">您访问的页面可能已被删除、更名或暂时不可用。</p>
+        <a class="btn-home" href="/index.html">返回工具首页</a>
+        <div class="cat-links">
+            <h2>按分类浏览</h2>
+            <ul>
+                <li><a href="/dev/index.html">🛠️ 开发工具</a></li>
+                <li><a href="/calc/index.html">🧮 计算工具</a></li>
+                <li><a href="/query/index.html">🔍 查询工具</a></li>
+                <li><a href="/convert/index.html">🔄 换算工具</a></li>
+                <li><a href="/image/index.html">🖼️ 图片工具</a></li>
+                <li><a href="/other/index.html">✨ 其它工具</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Copyright © <a href="https://www.luomor.com" target="_blank" rel="noopener">烙馍网</a></p>
+    </div>
+</div>
+<script src="/js/nav.js" defer></script>
+<script src="/js/site-i18n.js" defer></script>
+</body>
+</html>

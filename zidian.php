@@ -186,6 +186,7 @@ var _hmt = _hmt || [];
                 <a href="/query/ipcha.html">IP 查询</a>
                 <a href="/query/lianlu.html">网络链路查询</a>
                 <a href="/query/zidian.html">汉字字典</a>
+                <a href="/query/bishun.html">笔顺动画</a>
             </div>
         </div>
         <div class="nav-dropdown">

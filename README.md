@@ -2,7 +2,7 @@
 
 > 在线访问：<https://toolboxy.luomor.com/>
 
-烙馍网旗下的免费在线实用工具集，共 48 个工具。无需注册、开箱即用，绝大多数工具在浏览器本地运行，数据不上传服务器。
+烙馍网旗下的免费在线实用工具集，共 49 个工具。无需注册、开箱即用，绝大多数工具在浏览器本地运行，数据不上传服务器。
 
 ## 工具一览
 
@@ -47,6 +47,7 @@
 | IP 查询 | `query/ipcha.html` | IP 归属地 | 远程接口 |
 | 网络链路查询 | `query/lianlu.html` | 链路诊断 | 远程接口 |
 | 汉字字典 | `query/zidian.html` | 拼音/笔画/笔顺/组词/成语 | `zidian.php` + `data/` + `bishun_data/` |
+| 笔顺动画 | `query/bishun.html` | 逐笔动画演示书写顺序 | `bishun_data/`（纯前端） |
 
 ### 🔄 换算工具（`convert/`）
 | 工具 | 页面 | 说明 |
@@ -92,7 +93,7 @@
 ├── index.html       # 工具总览首页（按 6 个分类分组展示卡片）
 ├── dev/             # 开发工具（8），含 index.html 分类首页
 ├── calc/            # 计算工具（8），含 index.html 分类首页
-├── query/           # 查询工具（14），含 index.html 分类首页
+├── query/           # 查询工具（15），含 index.html 分类首页
 ├── convert/         # 换算工具（9），含 index.html 分类首页
 ├── image/           # 图片工具（2），含 index.html 分类首页
 ├── other/           # 其它工具（7），含 index.html 分类首页

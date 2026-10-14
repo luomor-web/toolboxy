@@ -15,3 +15,8 @@
 2026-09-17 新增 llms-full.txt
 
   - 48 个工具的完整说明与使用方法（由各页 seo-intro/tutorial/tip 自动生成）；llms.txt 已加互链
+
+2026-09-18 SEO/GEO 批量增强
+
+  - 55 页补齐 Open Graph + Twitter Card（og:image 为 img/xg4.png，已从主站复制）
+  - 55 页补齐 hreflang（zh-CN/zh-TW/en/x-default）；sitemap lastmod 刷新

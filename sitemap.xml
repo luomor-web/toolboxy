@@ -2,296 +2,302 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://toolboxy.luomor.com/</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/dev/aes.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/dev/base64.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/other/biaozhi.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/calc/bmi.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/query/chepai.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/dev/codefmt.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/convert/daxie.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/query/diqu.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/query/dns.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/other/emoji.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/calc/fangdai.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/other/fanyi.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/convert/fengsu.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/calc/geshui.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/query/guojia.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/dev/htmledit.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/convert/huobi.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/image/imgconv.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/image/imgzip.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/query/ipcha.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/convert/jianfan.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/query/jichang.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/calc/jisuan.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/dev/json.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/query/lianlu.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/dev/markdown.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/query/myip.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/dev/password.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/convert/pinyin.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/calc/qiyeshui.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/convert/rili.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/other/semang.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/query/sfz.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/calc/shangpin.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/convert/shizhong.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/query/shouji.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/other/shuxue.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/other/teshu.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/dev/timestamp.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/query/tld.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/convert/wendu.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/query/whois.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/calc/yanglao.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/query/youbian.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/calc/zengzhishui.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/convert/zhongliang.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/query/zidian.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://toolboxy.luomor.com/other/zishu.html</loc>
-        <lastmod>2026-09-16</lastmod>
+        <lastmod>2026-09-18</lastmod>
         <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://toolboxy.luomor.com/query/bishun.html</loc>
+        <lastmod>2026-10-14</lastmod>
+        <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
 </urlset>

@@ -308,7 +308,12 @@ textEl.addEventListener('input',function(){
     clearTimeout(debounce);
     debounce=setTimeout(gen,300);
 });
-['qr-size','qr-ec','qr-dark','qr-light'].forEach(function(id){
+// 尺寸/容错 change 生效；颜色用 input 事件实时生效（原生取色器在部分浏览器没有"确定"按钮）
+['qr-size','qr-ec'].forEach(function(id){
+    $(id).addEventListener('change',gen);
+});
+['qr-dark','qr-light'].forEach(function(id){
+    $(id).addEventListener('input',gen);
     $(id).addEventListener('change',gen);
 });
 

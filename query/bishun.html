@@ -223,6 +223,7 @@ var _hmt = _hmt || [];
     <div class="bs-controls">
         <button type="button" class="mini-btn" id="btn-play">暂停</button>
         <button type="button" class="mini-btn" id="btn-replay">重播</button>
+        <button type="button" class="mini-btn" id="btn-qibi">起笔</button>
         <button type="button" class="mini-btn" id="btn-prev">上一笔</button>
         <button type="button" class="mini-btn" id="btn-next">下一笔</button>
         <label class="bs-speed"><span>速度</span>
@@ -312,7 +313,7 @@ function animateStroke(i,onDone){
     var t0=null;
     cancelAnimationFrame(rafId);
     function step(ts){
-        if(!playing)return;
+        // 暂停通过 cancelAnimationFrame 实现，此处不再检查 playing（起笔/下一笔单步动画时 playing=false）
         if(t0===null)t0=ts;
         var k=Math.min(1,(ts-t0)/dur);
         mp.style.strokeDashoffset=len*(1-k);
@@ -374,7 +375,17 @@ input.addEventListener('keydown',function(e){if(e.key==='Enter')go();});
 playBtn.addEventListener('click',function(){playing?pause():play();});
 $('btn-replay').addEventListener('click',function(){if(!data)return;cur=0;paint();play();});
 $('btn-prev').addEventListener('click',function(){if(!data)return;pause();if(cur>0)cur--;paint();});
-$('btn-next').addEventListener('click',function(){if(!data)return;pause();if(cur<data.strokes.length)cur++;paint();});
+// 起笔：暂停连播，从头动画书写第一笔（单步，不自动继续）
+$('btn-qibi').addEventListener('click',function(){
+    if(!data)return;
+    pause();cur=0;paint();
+    animateStroke(0,null);
+});
+// 下一笔：暂停连播，动画书写当前笔（单步，不自动继续）
+$('btn-next').addEventListener('click',function(){
+    if(!data)return;pause();
+    if(cur<data.strokes.length)animateStroke(cur,null);
+});
 $('bs-ghost').addEventListener('change',function(){if(ghostG)ghostG.style.visibility=this.checked?'visible':'hidden';});
 $('bs-speed').addEventListener('change',function(){if(playing){var c=cur;pause();cur=c;play();}});
 

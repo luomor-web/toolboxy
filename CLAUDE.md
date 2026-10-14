@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 项目概述
 
-烙馍网在线工具（toolboxy.luomor.com）—— 约 49 个独立在线工具（时间戳、JSON 格式化、Base64、加密解密、计算器、汇率、万年历、各类查询等）组成的纯静态 + 少量 PHP 的站点。本目录嵌在主站字帖项目（luomor-zt，有独立 CLAUDE.md）内部，已完全独立：`Pinyin.php` 字典与 `bishun_data/` 笔顺数据均已复制进本项目。
+烙馍网在线工具（toolboxy.luomor.com）—— 约 50 个独立在线工具（时间戳、JSON 格式化、Base64、加密解密、计算器、汇率、万年历、各类查询等）组成的纯静态 + 少量 PHP 的站点。本目录嵌在主站字帖项目（luomor-zt，有独立 CLAUDE.md）内部，已完全独立：`Pinyin.php` 字典与 `bishun_data/` 笔顺数据均已复制进本项目。
 
 **无构建系统、无测试、无 lint**——纯 HTML/CSS/JS/PHP，部署即用。本地开发可用 `php -S localhost:8000` 在本目录起服务（Pinyin 字典在 `lib/Pinyin.php`，不再依赖父目录）。
 
@@ -43,7 +43,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 1. 新建 `<分类>/<name>.html`（含 canonical `https://toolboxy.luomor.com/<分类>/<name>.html`、keywords/description meta、AdSense 脚本块原样保留；资源引用全部用绝对路径 `/form.css`、`/js/...`）
 2. `index.html`（总览）和 `<分类>/index.html`（分类首页）的 `.cards` 里都加工具卡片
-3. **每个页面的 `.nav-bar` 对应分类下拉都要加链接**（导航 HTML 在全部 49 工具页 + 6 分类首页 + 根 index.html + pinyin.php/zidian.php 中逐页重复，需批量同步；可用 sed 批量插入）
+3. **每个页面的 `.nav-bar` 对应分类下拉都要加链接**（导航 HTML 在全部 50 工具页 + 6 分类首页 + 根 index.html + pinyin.php/zidian.php 中逐页重复，需批量同步；可用 sed 批量插入）
 4. `sitemap.xml` 加条目
 5. 新文案补进 `lang/site-en.json` 和 `lang/site-zh-TW.json`（分类首页的 title/subtitle/description 整串也是字典条目）
 
@@ -51,4 +51,4 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - 每页含大段 Google AdSense/funding choices 压缩 JS——编辑时**不要动这块**，定位正文请跳过 `<head>` 中的混淆脚本。
 - 页面面向 Edge/Chrome；SEO 字段（title/keywords/description/canonical）每页独立维护。
-- 外部依赖：Google AdSense、fanyi.html 用 api.mymemory.translated.net 翻译接口；其余无 CDN 依赖（jQuery/html2canvas 仅主站打印页用，本站未用）。
+- 外部依赖：Google AdSense、fanyi.html 用 api.mymemory.translated.net 翻译接口；二维码库 qrcodejs 已下载到本地 `js/vendor/qrcode.min.js`（勿用 cdnjs，国内不稳）；其余无 CDN 依赖（jQuery/html2canvas 仅主站打印页用，本站未用）。

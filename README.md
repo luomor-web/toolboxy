@@ -2,7 +2,7 @@
 
 > 在线访问：<https://toolboxy.luomor.com/>
 
-烙馍网旗下的免费在线实用工具集，共 49 个工具。无需注册、开箱即用，绝大多数工具在浏览器本地运行，数据不上传服务器。
+烙馍网旗下的免费在线实用工具集，共 50 个工具。无需注册、开箱即用，绝大多数工具在浏览器本地运行，数据不上传服务器。
 
 ## 工具一览
 
@@ -67,6 +67,7 @@
 |------|------|------|
 | 图片压缩 | `image/imgzip.html` | 本地压缩 |
 | 图片格式转换 | `image/imgconv.html` | 本地转换 |
+| 二维码生成 | `image/qrcode.html` | 文本/网址生成二维码，本地 PNG 下载 |
 
 ### ✨ 其它工具（`other/`）
 | 工具 | 页面 | 说明 |
@@ -95,7 +96,7 @@
 ├── calc/            # 计算工具（8），含 index.html 分类首页
 ├── query/           # 查询工具（15），含 index.html 分类首页
 ├── convert/         # 换算工具（9），含 index.html 分类首页
-├── image/           # 图片工具（2），含 index.html 分类首页
+├── image/           # 图片工具（3），含 index.html 分类首页
 ├── other/           # 其它工具（7），含 index.html 分类首页
 ├── pinyin.php / zidian.php / dns.php / proxy.php  # PHP 端点（根目录）
 ├── lib.php          # 共享 PHP 函数（笔顺/田字格渲染，仅 zidian.php 用）

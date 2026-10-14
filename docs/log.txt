@@ -20,3 +20,6 @@
 
   - 55 页补齐 Open Graph + Twitter Card（og:image 为 img/xg4.png，已从主站复制）
   - 55 页补齐 hreflang（zh-CN/zh-TW/en/x-default）；sitemap lastmod 刷新
+
+apt install php-fpm   # 或 dnf install php-fpm
+  systemctl enable --now php-fpm

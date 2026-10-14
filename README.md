@@ -67,7 +67,7 @@
 |------|------|------|
 | 图片压缩 | `image/imgzip.html` | 本地压缩 |
 | 图片格式转换 | `image/imgconv.html` | 本地转换 |
-| 二维码生成 | `image/qrcode.html` | 文本/网址生成二维码，本地 PNG 下载 |
+| 二维码生成器 | `image/qrcode.html` | 文本/网址生成二维码，本地 PNG 下载 |
 
 ### ✨ 其它工具（`other/`）
 | 工具 | 页面 | 说明 |

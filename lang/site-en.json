@@ -38,7 +38,6 @@
   "趣味田字格模板": "Picture Grid Paper",
   "描绘画": "Picture Tracing",
   "汉字信息汇": "Character Info Lookup",
-  "二维码生成": "QR Code",
   "韩语": "Korean",
   "日语": "Japanese",
   "越南语": "Vietnamese",
@@ -1784,7 +1783,6 @@
   "烙馍网在线工具查询工具：邮编查询、地区编码查询、机场三字码、国家编码查询、身份证号解析、手机号验证、车牌查询、域名后缀查询、域名查询、域名解析查询、本机IP查询、IP 查询、网络链路查询、汉字字典、笔顺动画，免费使用。": "Luomor Query Tools: Zip Code, Region Code, Airport Code, Country Code, ID Card Parser, Phone Number, License Plate, TLD, Whois, DNS, My IP, IP Lookup, Traceroute, Chinese Dictionary, Stroke Order Animation. Free to use.",
   "循环播放": "Loop",
   "起笔": "Start Stroke",
-  "二维码生成 - 在线二维码生成器免费下载 - 烙馍网在线工具": "QR Code Generator - Free Online QR Code Maker - Luomor Online Tools",
   "二维码生成，二维码生成器，在线二维码，网址二维码，文本二维码，二维码下载，烙馍网": "qr code generator,qr code maker,online qr code,url qr code,text qr code,qr code download,luomor",
   "免费在线二维码生成器：输入文本或网址立即生成二维码，支持尺寸、容错级别、前景背景颜色自定义，高清 PNG 本地下载，全程浏览器本地生成不上传。": "Free online QR code generator: type text or a URL to instantly create a QR code with custom size, error correction level and colors. Download high-quality PNG — generated locally in your browser.",
   "🔳 二维码生成": "🔳 QR Code Generator",
@@ -1808,5 +1806,7 @@
   "输入文本或网址即得二维码，尺寸/容错/颜色可调，PNG 下载。": "Type text or a URL to get a QR code. Adjustable size/EC/colors, PNG download.",
   "开发 · 生活 · 查询 · 图片处理，50 个免费在线工具": "Dev · Life · Query · Image — 50 Free Online Tools",
   "3 个免费在线图片工具": "3 Free Online Image Tools",
-  "烙馍网在线工具图片工具：图片压缩、图片格式转换、二维码生成，免费使用。": "Luomor Image Tools: Image Compressor, Image Format Converter, QR Code Generator. Free to use."
+  "烙馍网在线工具图片工具：图片压缩、图片格式转换、二维码生成，免费使用。": "Luomor Image Tools: Image Compressor, Image Format Converter, QR Code Generator. Free to use.",
+  "二维码生成器 - 在线生成二维码免费下载 - 烙馍网在线工具": "QR Code Generator - Free Online QR Code Maker - Luomor Online Tools",
+  "生成二维码": "Generate QR Code"
 }

@@ -233,6 +233,7 @@ var _hmt = _hmt || [];
             </select>
         </label>
         <label class="bs-ghost"><input type="checkbox" id="bs-ghost" checked><span>描红底字</span></label>
+        <label class="bs-ghost"><input type="checkbox" id="bs-loop" checked><span>循环播放</span></label>
     </div>
     <p class="bs-dict-link"><a href="#" id="bs-dict" target="_blank" rel="noopener">查看字典详情 →</a></p>
 </div>
@@ -327,7 +328,12 @@ function play(){
     playing=true;updatePlayBtn();
     (function next(){
         if(!playing)return;
-        if(cur>=data.strokes.length){playing=false;updatePlayBtn();return;}
+        if(cur>=data.strokes.length){
+            // 循环播放：整字完成后停顿 0.8s 再从头演示
+            if($('bs-loop').checked){setTimeout(function(){if(playing){cur=0;paint();next();}},800);}
+            else{playing=false;updatePlayBtn();}
+            return;
+        }
         animateStroke(cur,next);
     })();
 }

@@ -23,3 +23,8 @@
 
 apt install php-fpm   # 或 dnf install php-fpm
   systemctl enable --now php-fpm
+
+2026-10-17 分类工具页返回链接修正
+
+  - 52 个分类工具页（含 pinyin.php/zidian.php）返回链接改为「← 分类首页 + ← 工具首页」（原来两条都指向 /index.html）
+  - lang/site-*.json +7 条分类返回链接译文

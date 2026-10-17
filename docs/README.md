@@ -14,4 +14,6 @@ claude
 新增二维码生成工具
 二维码生成改为二维码生成器，提供确定按钮
 二维码生成器，颜色选择没有确定按钮
+各模块页面应该提供返回各模块首页，而不是返回烙馍网在线工具
+比如https://toolboxy.luomor.com/query/shouji.html，a class="back-link"应该有一个是返回https://toolboxy.luomor.com/query/index.html
 ```
